@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">ZooDeLille</string>
+
+    <!-- WELCOME -->
+    <string name="bienvenue_au_zoo_de_lille">Bienvenue au Zoo de Lille</string>
+    <string name="button_home_go_courses">Cliquez ici pour accéder à vos parcours</string>
+    <string name="textview_home_courses">Pas de parcours en cours</string>
+    <string name="date_bienvenue">Jour Mois Année - Ouvert / fermé + horaire</string>
+
+    <!-- INFORMATION -->
+    <string name="prices_adultes_gratuit">Entrée gratuite pour les adultes habitants à Lille</string>
+    <string name="pass_zoo">Les habitants de Lille, Lomme ou Hellemmes doivent se procurer un « Pass zoo » (délai de quelques jours à prévoir !) avant la visite pour profiter de l’entrée gratuite.</string>
+    <string name="prices_adultes_payant">Entrée adulte au prix de 4 euros (tarif de 2020)</string>
+    <string name="prices_enfants_payant">Entrée enfant entre 5 à 17 ans inclus à 2 euros (tarif de 2020).</string>
+    <string name="prices_enfants_gratuit">Entrée gratuite pour les habitants de Lille.</string>
 </resources>
