@@ -1,6 +1,10 @@
 # Created by https://www.toptal.com/developers/gitignore/api/androidstudio,java,android
 # Edit at https://www.toptal.com/developers/gitignore?templates=androidstudio,java,android
 
+### Phase dev ###
+# Igniore IP
+IP.java
+
 ### Android ###
 # Built application files
 *.apk
