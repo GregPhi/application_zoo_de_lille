@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/relative_welcome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="365dp"
+                android:contentDescription="@string/wallpaper_home" />
+
+            <TextView
+                android:id="@+id/welcome_to_zoo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="69dp"
+                android:text="@string/bienvenue_au_zoo_de_lille"
+                android:textSize="30sp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="25dp"/>
+
+            <TextView
+                android:id="@+id/welcome_to_zoo_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/date_bienvenue"
+                android:textSize="18sp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="65dp" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="110dp"
+                android:text="@string/textview_home_courses"
+                android:textAlignment="viewStart"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="145dp"
+                android:text="@string/button_home_go_courses"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relative_actus"
+            android:layout_width="match_parent"
+            android:layout_height="365dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/relative_welcome">
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:background="@drawable/ic_baseline_expand_more_24"
+                android:text="@string/more_info"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="335dp"/>
+        </RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.cardview.widget.CardView>
