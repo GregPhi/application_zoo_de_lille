@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/animals_filter_alpha"
+        android:title="@string/text_filter_alpha"/>
+    <item
+        android:id="@+id/animals_filter_like"
+        android:title="@string/text_filter_favori"/>
+    <item
+        android:id="@+id/animals_filter_level"
+        android:title="@string/text_filter_alim"/>
+</menu>

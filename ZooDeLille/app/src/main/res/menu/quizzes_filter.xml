@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/quizzes_filter_alpha"
+        android:title="@string/text_filter_alpha"/>
+    <item
+        android:id="@+id/quizzes_filter_make"
+        android:title="@string/text_filter_make"/>
+    <item
+        android:id="@+id/quizzes_filter_level"
+        android:title="@string/text_filter_level"/>
+</menu>
