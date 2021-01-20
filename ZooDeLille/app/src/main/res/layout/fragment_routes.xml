@@ -6,15 +6,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/button_access_route"
+    <TextView
+        android:id="@+id/text_access_route"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
         android:text="@string/no_route"
+        android:textAlignment="center"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@color/colorAccent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_routes"
@@ -25,7 +28,7 @@
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_access_route"
+        app:layout_constraintTop_toBottomOf="@+id/text_access_route"
         app:title="@string/routes"/>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -36,5 +39,23 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_routes" />
+
+    <ImageButton
+        android:id="@+id/button_route_play_or_stop"
+        android:layout_width="29dp"
+        android:layout_height="31dp"
+        app:layout_constraintBottom_toTopOf="@+id/toolbar_routes"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/drawable_play"
+        android:contentDescription="Button to play " />
+
+    <ImageButton
+        android:id="@+id/button_route_pause"
+        android:layout_width="29dp"
+        android:layout_height="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/toolbar_routes"
+        app:layout_constraintStart_toEndOf="@+id/button_route_play_or_stop"
+        app:srcCompat="@drawable/drawable_pause"
+        android:contentDescription="TODO" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
