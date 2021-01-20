@@ -9,7 +9,7 @@
     <string name="icon_quizzes">Quiz</string>
     <string name="icon_qrcode">QR Code</string>
 
-    <!-- WELCOME -->
+    <!-- FRAGMENT HOME -->
     <string name="bienvenue_au_zoo_de_lille">Bienvenue au Zoo de Lille</string>
     <string name="button_home_go_courses">Cliquez ici pour accéder à vos parcours</string>
     <string name="textview_home_courses">Pas de parcours en cours</string>
@@ -23,17 +23,32 @@
     <string name="prices_enfants_gratuit">Entrée gratuite pour les habitants de Lille.</string>
     <string name="more_info">Plus d\'informations</string>
     <string name="wallpaper_home">Random animal picture</string>
-    <string name="route_name">Route name</string>
-    <string name="set_fav">Set if route is favorite or not</string>
 
+    <!-- CARD VIEW ROUTE -->
+    <string name="route_name">Route name</string>
+    <string name="set_fav_route">Set if route is favorite or not</string>
     <string name="text_route_distance">Distance du parcours : %1$d</string>
     <string name="text_route_time">Durée estimée du parcours : %1$d</string>
+    <!-- CARD VIEW ANIMAL -->
+    <string name="animal_picture">Animal picture</string>
+    <string name="animal_name">Animal name</string>
+    <string name="set_fav_animal">Set if route is favorite or not</string>
+    <!-- CARD VIEW QUIZ -->
+    <string name="quiz_name">Quiz name</string>
+    <string name="quiz_level">Level</string>
+    <string name="quiz_best_score">Best score</string>
+    <string name="quizzes_play">Play a quiz</string>
+
+    <!-- FRAGMENT ROUTES -->
     <string name="no_route">Pas de parcours en cours.</string>
     <string name="routes">Parcours</string>
+    <!-- FRAGMENT ANIMALS -->
     <string name="animals">Animaux</string>
+    <!-- FRAGMENT QUIZZES -->
     <string name="quizzes">Quiz</string>
-    <string name="filter_button">Filter button</string>
 
+    <!-- FILTER -->
+    <string name="filter_button">Filter button</string>
     <string name="text_filter_alpha">A - Z</string>
     <string name="text_filter_make">Fait ?</string>
     <string name="text_filter_level">Niveau</string>
