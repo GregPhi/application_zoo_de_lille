@@ -1,4 +1,4 @@
-package com.example.zoodelille;
+package com.example.zoodelille.view.home.fragment;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -8,6 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.example.zoodelille.R;
+import com.example.zoodelille.view.info.fragment.InfoActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -55,7 +58,7 @@ public class HomeFragment extends Fragment {
         button_to_info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(m_view.getContext(),InfoActivity.class);
+                Intent intent = new Intent(m_view.getContext(), InfoActivity.class);
                 startActivity(intent);
             }
         });

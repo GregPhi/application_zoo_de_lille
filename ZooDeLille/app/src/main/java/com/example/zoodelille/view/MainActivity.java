@@ -1,9 +1,15 @@
-package com.example.zoodelille;
+package com.example.zoodelille.view;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.zoodelille.R;
+import com.example.zoodelille.view.animal.fragment.AnimalFragment;
+import com.example.zoodelille.view.home.fragment.HomeFragment;
+import com.example.zoodelille.view.map.fragment.MapFragment;
+import com.example.zoodelille.view.qrcode.fragment.QRCodeFragment;
+import com.example.zoodelille.view.quiz.fragment.QuizFragment;
+import com.example.zoodelille.view.route.fragment.RouteFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;

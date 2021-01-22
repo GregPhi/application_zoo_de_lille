@@ -1,4 +1,4 @@
-package com.example.zoodelille;
+package com.example.zoodelille.view.quiz.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -6,6 +6,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toolbar;
+
+import com.example.zoodelille.R;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
