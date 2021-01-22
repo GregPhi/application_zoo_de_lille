@@ -16,6 +16,7 @@
     <string name="date_bienvenue">Jour Mois Année - Ouvert / fermé + horaire</string>
 
     <!-- INFORMATION -->
+    <string name="back_home">Retour à la page d\'accueil</string>
     <string name="prices_adultes_gratuit">Entrée gratuite pour les adultes habitants à Lille</string>
     <string name="pass_zoo">Les habitants de Lille, Lomme ou Hellemmes doivent se procurer un « Pass zoo » (délai de quelques jours à prévoir !) avant la visite pour profiter de l’entrée gratuite.</string>
     <string name="prices_adultes_payant">Entrée adulte au prix de 4 euros (tarif de 2020)</string>
