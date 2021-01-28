@@ -3,7 +3,8 @@
 
 ### Phase dev ###
 # Igniore IP
-IP.java
+Local.java
+/ZooDeLille/app/src/main/res/xml/*.xml
 
 ### Android ###
 # Built application files
