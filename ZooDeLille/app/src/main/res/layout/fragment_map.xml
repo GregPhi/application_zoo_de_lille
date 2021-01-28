@@ -14,5 +14,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/zoo" />
+        app:srcCompat="@drawable/zoo"
+        android:contentDescription="@string/icon_map" />
 </androidx.constraintlayout.widget.ConstraintLayout>
