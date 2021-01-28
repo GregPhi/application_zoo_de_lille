@@ -4,9 +4,12 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.zoodelille.R;
+import com.example.zoodelille.data.di.DepencyInjector;
+import com.example.zoodelille.data.entity.ZooEntity;
 import com.example.zoodelille.view.animal.fragment.AnimalFragment;
 import com.example.zoodelille.view.home.fragment.HomeFragment;
 import com.example.zoodelille.view.map.fragment.MapFragment;
+import com.example.zoodelille.view.model.ZooViewModel;
 import com.example.zoodelille.view.qrcode.fragment.QRCodeFragment;
 import com.example.zoodelille.view.quiz.fragment.QuizFragment;
 import com.example.zoodelille.view.route.fragment.RouteFragment;
@@ -18,6 +21,7 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 public class MainActivity extends AppCompatActivity {
     private BottomNavigationView m_BottomNav;
@@ -36,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int positionQuizFragment = 4;
     private static final int positionQRCodeFragment = 5;
     public int m_currentFragment = positionHomeFragment;
+    private ZooViewModel zooViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,11 +83,19 @@ public class MainActivity extends AppCompatActivity {
         }
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                 m_listFragment.get(m_currentFragment)).commit();
+        setupZooVersion();
     }
 
     @Override
     protected void onSaveInstanceState(Bundle bundle) {
         super.onSaveInstanceState(bundle);
         bundle.putInt("currentPositionFragment", m_currentFragment);
+    }
+
+    public void setupZooVersion(){
+        if(zooViewModel == null){
+            zooViewModel = new ViewModelProvider(this, DepencyInjector.getViewModelFactoryZoo()).get(ZooViewModel.class);
+            zooViewModel.checkVersion();
+        }
     }
 }
