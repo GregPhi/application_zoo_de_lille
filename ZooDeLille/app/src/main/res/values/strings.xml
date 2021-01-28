@@ -57,4 +57,7 @@
     <string name="text_filter_alim">Régime alimentaire</string>
     <string name="text_filter_distance">Distance</string>
     <string name="text_filter_time">Durée estimée</string>
+    <string name="back">Retour</string>
+    <string name="zone_geo">Zone geo</string>
+    <string name="pause">Pause</string>
 </resources>
