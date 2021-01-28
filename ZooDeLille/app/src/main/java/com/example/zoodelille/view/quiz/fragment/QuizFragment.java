@@ -33,7 +33,7 @@ public class QuizFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        toolbar = (Toolbar) m_view.findViewById(R.id.toolbar_quizzes);
+        toolbar = m_view.findViewById(R.id.toolbar_quizzes);
         toolbar.inflateMenu(R.menu.quizzes_filter);
         toolbar.setTitle(R.string.quizzes);
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
