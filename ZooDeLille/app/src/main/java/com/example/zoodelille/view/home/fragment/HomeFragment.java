@@ -48,7 +48,7 @@ public class HomeFragment extends Fragment {
 
     @SuppressLint("SimpleDateFormat")
     public void setWelcome_to_zoo_date(){
-        SimpleDateFormat formater = null;
+        SimpleDateFormat formater;
         Date aujourdhui = new Date();
         formater = new SimpleDateFormat("'le' dd MMMM yyyy 'à' hh:mm:ss");
         welcome_to_zoo_date.setText(formater.format(aujourdhui));
