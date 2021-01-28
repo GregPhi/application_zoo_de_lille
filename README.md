@@ -19,8 +19,10 @@ public class Local {
     <base-config cleartextTrafficPermitted="true" />
 </network-security-config>
 ```
-
 Où IP c'est l'adresse IP d'où vous exécutez zoo-api
+
+- lancement de zoo-api en local
+- si pas d'erreur au niveau de l'api, vous pouvez lancer l'exécution de l'application depuis AndroidStudio 
 
 ### Crédits :
 - SVG Parcours : Icons made by "https://www.flaticon.com/authors/srip" from "https://www.flaticon.com/"
