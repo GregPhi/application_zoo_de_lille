@@ -33,7 +33,7 @@ public class RouteFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        toolbar = (Toolbar) m_view.findViewById(R.id.toolbar_routes);
+        toolbar = m_view.findViewById(R.id.toolbar_routes);
         toolbar.inflateMenu(R.menu.routes_filter);
         toolbar.setTitle(R.string.routes);
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
