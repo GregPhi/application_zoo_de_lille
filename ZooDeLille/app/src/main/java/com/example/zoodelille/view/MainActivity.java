@@ -5,7 +5,6 @@ import android.view.MenuItem;
 
 import com.example.zoodelille.R;
 import com.example.zoodelille.data.di.DepencyInjector;
-import com.example.zoodelille.data.entity.ZooEntity;
 import com.example.zoodelille.view.animal.fragment.AnimalFragment;
 import com.example.zoodelille.view.home.fragment.HomeFragment;
 import com.example.zoodelille.view.map.fragment.MapFragment;
