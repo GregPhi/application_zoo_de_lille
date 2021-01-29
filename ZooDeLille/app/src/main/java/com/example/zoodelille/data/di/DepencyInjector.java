@@ -44,7 +44,7 @@ public class DepencyInjector {
 
     public static ViewModelFactoryZoo getViewModelFactoryZoo() {
         if (viewModelFactoryZoo == null) {
-            viewModelFactoryZoo = new ViewModelFactoryZoo(getZooRepository(), getAnimalRepository());
+            viewModelFactoryZoo = new ViewModelFactoryZoo(getZooRepository());
         }
         return viewModelFactoryZoo;
     }
@@ -58,7 +58,7 @@ public class DepencyInjector {
 
     public static ZooRepository getZooRepository(){
         if(zooRepository == null){
-            zooRepository = new ZooRepository(new ZooLocalDataSource(getProjectDatabase()), new ZooRemoteDataSource(getZooService()));
+            zooRepository = new ZooRepository(new ZooLocalDataSource(getProjectDatabase()), new ZooRemoteDataSource(getZooService()), new AnimalLocalDataSource(getProjectDatabase()), new AnimalRemoteDataSource(getZooService()));
         }
         return zooRepository;
     }
