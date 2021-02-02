@@ -1,5 +1,7 @@
 package com.example.zoodelille.data.entity;
 
+import java.util.Date;
+
 import androidx.annotation.Nullable;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -7,12 +9,8 @@ import androidx.room.PrimaryKey;
 @Entity
 public class ZooEntity {
     @PrimaryKey
-    private int id;
-    private int animal_version;
-    private int route_version;
-    private int quiz_version;
-    private int interest_version;
-    private int info_version;
+    private int id = 0;
+    private Date date_last_version;
 
     public ZooEntity() {
     }
@@ -25,44 +23,12 @@ public class ZooEntity {
         this.id = id;
     }
 
-    public int getAnimal_version() {
-        return animal_version;
+    public Date getDate_last_version() {
+        return date_last_version;
     }
 
-    public void setAnimal_version(int animal_version) {
-        this.animal_version = animal_version;
-    }
-
-    public int getRoute_version() {
-        return route_version;
-    }
-
-    public void setRoute_version(int route_version) {
-        this.route_version = route_version;
-    }
-
-    public int getQuiz_version() {
-        return quiz_version;
-    }
-
-    public void setQuiz_version(int quiz_version) {
-        this.quiz_version = quiz_version;
-    }
-
-    public int getInterest_version() {
-        return interest_version;
-    }
-
-    public void setInterest_version(int interest_version) {
-        this.interest_version = interest_version;
-    }
-
-    public int getInfo_version() {
-        return info_version;
-    }
-
-    public void setInfo_version(int info_version) {
-        this.info_version = info_version;
+    public void setDate_last_version(Date date_last_version) {
+        this.date_last_version = date_last_version;
     }
 
     @Override
@@ -70,11 +36,10 @@ public class ZooEntity {
         if(obj == null){
             return false;
         }
+        if(!(obj instanceof ZooEntity)){
+            return false;
+        }
         final ZooEntity zooEntity = (ZooEntity) obj;
-        return this.animal_version == zooEntity.animal_version
-                && this.quiz_version == zooEntity.quiz_version
-                && this.info_version == zooEntity.info_version
-                && this.route_version == zooEntity.route_version
-                && this.interest_version == zooEntity.interest_version;
+        return this.date_last_version.equals(zooEntity.getDate_last_version());
     }
 }
