@@ -3,6 +3,8 @@ package com.example.zoodelille.data.repository.zoo.local;
 import com.example.zoodelille.data.db.ProjectDatabase;
 import com.example.zoodelille.data.entity.ZooEntity;
 
+import java.util.List;
+
 import io.reactivex.Completable;
 import io.reactivex.Single;
 
@@ -21,7 +23,7 @@ public class ZooLocalDataSource {
         return projectDatabase.zooDao().update(zooEntity);
     }
 
-    public Single<ZooEntity> findZooVersion(){
+    public Single<List<ZooEntity>> findZooVersion(){
         return projectDatabase.zooDao().findZooVersion();
     }
 }
