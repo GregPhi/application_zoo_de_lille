@@ -60,4 +60,5 @@
     <string name="back">Retour</string>
     <string name="zone_geo">Zone geo</string>
     <string name="pause">Pause</string>
+    <string name="button_to_play">Button to play</string>
 </resources>
