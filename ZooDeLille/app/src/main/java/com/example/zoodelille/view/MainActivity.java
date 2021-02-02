@@ -8,6 +8,7 @@ import com.example.zoodelille.data.di.DepencyInjector;
 import com.example.zoodelille.view.animal.fragment.AnimalFragment;
 import com.example.zoodelille.view.home.fragment.HomeFragment;
 import com.example.zoodelille.view.map.fragment.MapFragment;
+import com.example.zoodelille.view.model.Event;
 import com.example.zoodelille.view.model.ZooViewModel;
 import com.example.zoodelille.view.qrcode.fragment.QRCodeFragment;
 import com.example.zoodelille.view.quiz.fragment.QuizFragment;
@@ -20,6 +21,7 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 public class MainActivity extends AppCompatActivity {
@@ -95,6 +97,12 @@ public class MainActivity extends AppCompatActivity {
         if(zooViewModel == null){
             zooViewModel = new ViewModelProvider(this, DepencyInjector.getViewModelFactoryZoo()).get(ZooViewModel.class);
             zooViewModel.checkVersion();
+            zooViewModel.getCheckVersionEvent().observeForever(new Observer<Event<String>>() {
+                @Override
+                public void onChanged(Event<String> stringEvent) {
+                    //Do nothing
+                }
+            });
         }
     }
 }
