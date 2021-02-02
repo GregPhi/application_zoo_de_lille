@@ -1,5 +1,14 @@
 apply plugin: 'com.android.application'
 
+// Set the properties within `local.properties` into a `Properties` class so
+// that values within `local.properties` (e.g. Maps API key) are accessible in
+// this file.
+Properties properties = new Properties()
+if (rootProject.file("local.properties").exists()) {
+    properties.load(rootProject.file("local.properties").newDataInputStream())
+}
+def mapsApiKey = properties.getProperty("MAPS_API_KEY", "")
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
@@ -12,6 +21,19 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        // Inject the Maps API key into the manifest
+        manifestPlaceholders = [ mapsApiKey : mapsApiKey ]
+
+        // Reading the Maps API key into a BuildConfig value. This is only
+        // necessary so that the sample app can display a toast message if the
+        // API key was not set, otherwise, this can be skipped.
+        buildConfigField("String", "MAPS_API_KEY", "\"$mapsApiKey\"" )
+
+        // To add your Maps API key to this project:
+        // 1. Open the root project's local.properties file
+        // 2. Add this line, where YOUR_API_KEY is your API key:
+        //        MAPS_API_KEY=YOUR_API_KEY
     }
 
     buildTypes {
@@ -46,6 +68,7 @@ dependencies {
 
     implementation "androidx.room:room-runtime:2.2.6"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
     annotationProcessor "androidx.room:room-compiler:2.2.6"
     implementation "androidx.room:room-rxjava2:2.2.6"
 
