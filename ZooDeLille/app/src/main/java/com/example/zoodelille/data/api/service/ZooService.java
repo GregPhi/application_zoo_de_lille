@@ -12,7 +12,7 @@ import retrofit2.http.Path;
 public interface ZooService {
     String URL = Local.URL+"zoo-api/";
 
-    @GET("version")
+    @GET("version/")
     Single<Zoo> getVersion();
 
     @GET("animals/")
