@@ -2,7 +2,9 @@ package com.example.zoodelille.view;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
+import com.example.zoodelille.BuildConfig;
 import com.example.zoodelille.R;
 import com.example.zoodelille.view.animal.fragment.AnimalFragment;
 import com.example.zoodelille.view.home.fragment.HomeFragment;
@@ -78,6 +80,9 @@ public class MainActivity extends AppCompatActivity {
         }
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                 m_listFragment.get(m_currentFragment)).commit();
+        if (BuildConfig.MAPS_API_KEY.isEmpty()) {
+            Toast.makeText(this, "Add your own API key in local.properties as MAPS_API_KEY=YOUR_API_KEY", Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override
