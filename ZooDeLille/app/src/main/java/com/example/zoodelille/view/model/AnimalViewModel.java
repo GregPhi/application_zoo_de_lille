@@ -11,8 +11,10 @@ import java.util.List;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.observers.DisposableCompletableObserver;
 import io.reactivex.schedulers.Schedulers;
 import io.reactivex.subscribers.ResourceSubscriber;
 
@@ -23,14 +25,30 @@ public class AnimalViewModel extends ViewModel {
     private final MutableLiveData<Boolean> isLoad = new MutableLiveData<>();
     private final AnimalToAnimalItemViewModel animalToAnimalItemViewModel = new AnimalToAnimalItemViewModel();
 
-    private final AnimalToAnimalEntity animalToAnimalEntity = new AnimalToAnimalEntity();
+    private final MutableLiveData<Event<Integer>> eventFavorite = new MutableLiveData<>();
 
     public AnimalViewModel(AnimalRepository animalRepository) {
         this.animalRepository = animalRepository;
         this.compositeDisposable = new CompositeDisposable();
     }
 
-    public MutableLiveData<List<AnimalItemViewModel>> getAnimals() {
+    public void changeFavoriteStatut(final AnimalEntity animal) {
+        compositeDisposable.add(animalRepository.addAnimal(animal)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableCompletableObserver() {
+                    @Override
+                    public void onComplete() {
+                        eventFavorite.setValue(new Event<>(animal.getId()));
+                    }
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+                }));
+    }
+
+    public MutableLiveData<List<AnimalItemViewModel>> getAllAnimal() {
         isLoad.postValue(true);
         compositeDisposable.clear();
         compositeDisposable.add(animalRepository.getAllAnimal()
@@ -56,15 +74,59 @@ public class AnimalViewModel extends ViewModel {
         return animals;
     }
 
-    public MutableLiveData<Boolean> getIsLoad() {
-        return isLoad;
+    public MutableLiveData<List<AnimalItemViewModel>> getAllAnimalOnAZ_or_ZA(boolean isAsc) {
+        isLoad.postValue(true);
+        compositeDisposable.clear();
+        compositeDisposable.add(animalRepository.getAllAnimalOnAZ_or_ZA(isAsc)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new ResourceSubscriber<List<AnimalEntity>>() {
+                    @Override
+                    public void onNext(List<AnimalEntity> animalEntities) {
+                        isLoad.postValue(false);
+                        animals.setValue(animalToAnimalItemViewModel.map(animalEntities));
+                    }
+
+                    @Override
+                    public void onError(Throwable t) {
+                        isLoad.postValue(false);
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        isLoad.postValue(false);
+                    }
+                }));
+        return animals;
     }
 
-    public void retrieveAnimals(){
-        List<Animal> animals = animalRepository.getAllAnimals().blockingGet();
-        List<AnimalEntity> animalEntities = animalToAnimalEntity.map(animals);
-        for(AnimalEntity animalEntity : animalEntities){
-            animalRepository.addAnimal(animalEntity);
-        }
+    public MutableLiveData<List<AnimalItemViewModel>> getAllAnimalIsFavorite_or_Not(boolean isFavorite) {
+        isLoad.postValue(true);
+        compositeDisposable.clear();
+        compositeDisposable.add(animalRepository.getAllAnimalIsFavorite_or_Not(isFavorite)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new ResourceSubscriber<List<AnimalEntity>>() {
+                    @Override
+                    public void onNext(List<AnimalEntity> animalEntities) {
+                        isLoad.postValue(false);
+                        animals.setValue(animalToAnimalItemViewModel.map(animalEntities));
+                    }
+
+                    @Override
+                    public void onError(Throwable t) {
+                        isLoad.postValue(false);
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        isLoad.postValue(false);
+                    }
+                }));
+        return animals;
+    }
+
+    public MutableLiveData<Boolean> getIsLoad() {
+        return isLoad;
     }
 }
