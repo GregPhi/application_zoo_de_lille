@@ -133,8 +133,8 @@ public class Animal extends Visible {
         return favorite;
     }
 
-    public void setFavorite(boolean favorite) {
-        this.favorite = favorite;
+    public void setFavorite() {
+        this.favorite = true;
     }
 
     public Quiz getQuiz() {
