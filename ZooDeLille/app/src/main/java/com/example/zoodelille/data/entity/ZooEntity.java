@@ -39,6 +39,9 @@ public class ZooEntity {
         if(!(obj instanceof ZooEntity)){
             return false;
         }
+        if(this.date_last_version == null){
+            return false;
+        }
         final ZooEntity zooEntity = (ZooEntity) obj;
         return this.date_last_version.equals(zooEntity.getDate_last_version());
     }
