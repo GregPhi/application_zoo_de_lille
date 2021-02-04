@@ -7,4 +7,15 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.Lille">
+        <item name="colorPrimaryDark">@color/DarkGreen</item>
+        <item name="colorPrimary">@color/LightGreen</item>
+        <item name="colorPrimaryVariant">@color/LighterGreen</item>
+        <item name="colorAccent">@color/LightBlue</item>
+    </style>
 </resources>
