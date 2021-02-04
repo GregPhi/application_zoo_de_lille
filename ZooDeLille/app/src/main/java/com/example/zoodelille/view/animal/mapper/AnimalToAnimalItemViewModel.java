@@ -31,4 +31,21 @@ public class AnimalToAnimalItemViewModel {
         }
         return animalItemViewModels;
     }
+
+    public AnimalEntity reverse(AnimalItemViewModel animalItemViewModel){
+        AnimalEntity animalEntity = new AnimalEntity();
+        animalEntity.setId(animalItemViewModel.getId());
+        animalEntity.setName(animalItemViewModel.getName());
+        animalEntity.setZooPositionEntity(animalItemViewModel.getZooPosition());
+        animalEntity.setSituation_geo_picture_url(animalItemViewModel.getSituation_geo_picture_url());
+        animalEntity.setMp3_url(animalItemViewModel.getMp3_url());
+        animalEntity.setLatin_name(animalItemViewModel.getLatin_name());
+        animalEntity.setDescription(animalItemViewModel.getDescription());
+        animalEntity.setClassification(animalItemViewModel.getClassification());
+        animalEntity.setMenaced(animalItemViewModel.getMenaced());
+        animalEntity.setFavorite(animalItemViewModel.isFavorite());
+        animalEntity.setQuiz(animalItemViewModel.getQuiz());
+        animalEntity.setPicture(animalItemViewModel.getPicture());
+        return animalEntity;
+    }
 }
