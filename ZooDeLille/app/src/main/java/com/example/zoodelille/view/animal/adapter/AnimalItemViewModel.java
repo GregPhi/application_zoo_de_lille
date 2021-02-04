@@ -154,6 +154,14 @@ public class AnimalItemViewModel implements Parcelable {
         return picture;
     }
 
+    public void setOppoFav(){
+        if(favorite){
+            favorite = false;
+        }else{
+            favorite = true;
+        }
+    }
+
     @Override
     public int describeContents() {
         return 0;
