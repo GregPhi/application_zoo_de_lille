@@ -1,5 +1,7 @@
 package com.example.zoodelille.data.repository.zoo;
 
+import android.util.Log;
+
 import com.example.zoodelille.data.entity.ZooEntity;
 import com.example.zoodelille.data.entity.animal.AnimalEntity;
 import com.example.zoodelille.data.repository.animal.local.AnimalLocalDataSource;
@@ -36,7 +38,8 @@ public class ZooRepository {
                                 .map(new Function<List<ZooEntity>, ZooEntity>() {
                                     @Override
                                     public ZooEntity apply(List<ZooEntity> zooEntities) {
-                                       return (zooEntities.isEmpty()) ? null : zooEntities.get(0);
+                                        Log.e("TAG_zooEntities","empty ? "+zooEntities.isEmpty());
+                                       return (zooEntities.isEmpty()) ? new ZooEntity() : zooEntities.get(0);
                                     }
                                 })
                                 .map(new Function<ZooEntity, Boolean>() {
@@ -60,7 +63,7 @@ public class ZooRepository {
                                         return Completable.complete();
                                     }
                                 })
-                                .andThen(zooLocalDataSource.update(zooEntityAPI));
+                                .andThen(zooLocalDataSource.insert(zooEntityAPI));
                         }
                 });
     }
