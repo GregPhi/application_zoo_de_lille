@@ -43,6 +43,8 @@
     <!-- FRAGMENT ROUTES -->
     <string name="no_route">Pas de parcours en cours.</string>
     <string name="routes">Parcours</string>
+    <string name="pause">Pause</string>
+    <string name="button_to_play">Button to play</string>
     <!-- FRAGMENT ANIMALS -->
     <string name="animals">Animaux</string>
     <!-- FRAGMENT QUIZZES -->
@@ -57,8 +59,15 @@
     <string name="text_filter_alim">Régime alimentaire</string>
     <string name="text_filter_distance">Distance</string>
     <string name="text_filter_time">Durée estimée</string>
-    <string name="back">Retour</string>
+
+    <!-- ANIMAL -->
+    <string name="description">Description</string>
+    <string name="menaced">Menaced</string>
+    <string name="classification">Classification</string>
+    <string name="nom_latin">Nom latin</string>
     <string name="zone_geo">Zone geo</string>
-    <string name="pause">Pause</string>
-    <string name="button_to_play">Button to play</string>
+    <string name="do_you_know">Le saviez-vous ?</string>
+
+    <!-- OTHERS -->
+    <string name="back">Retour</string>
 </resources>
