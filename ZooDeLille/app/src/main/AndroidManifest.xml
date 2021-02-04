@@ -33,7 +33,7 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".view.info.fragment.InfoActivity"
+            android:name=".view.info.InfoActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".view.animal.info.AnimalInfoActivity"

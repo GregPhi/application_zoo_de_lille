@@ -1,4 +1,4 @@
-package com.example.zoodelille.view.info.fragment;
+package com.example.zoodelille.view.home;
 
 import android.os.Bundle;
 import android.view.View;
