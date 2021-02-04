@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
@@ -17,6 +18,7 @@ import com.google.android.material.tabs.TabLayoutMediator;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewpager2.widget.ViewPager2;
 
 public class AnimalInfoActivity extends AppCompatActivity {
@@ -31,8 +33,33 @@ public class AnimalInfoActivity extends AppCompatActivity {
         Intent intent = getIntent();
         animal = intent.getParcelableExtra("animal");
         setContentView(R.layout.activity_animal_info);
+        setupActionAnimal();
         setupAnimal();
         setupViewPager();
+    }
+
+    public void setupActionAnimal(){
+        ConstraintLayout listen_info = findViewById(R.id.listen_info);
+        listen_info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(),"Fiche audio",Toast.LENGTH_LONG).show();
+            }
+        });
+        ConstraintLayout play_quiz = findViewById(R.id.play_quiz);
+        play_quiz.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(),"Quiz",Toast.LENGTH_LONG).show();
+            }
+        });
+        ConstraintLayout where_in_zoo = findViewById(R.id.where_in_zoo);
+        where_in_zoo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(),"Map",Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     public void setupAnimal(){
