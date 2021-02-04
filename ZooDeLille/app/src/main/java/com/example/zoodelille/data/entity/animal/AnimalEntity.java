@@ -6,6 +6,7 @@ import com.example.zoodelille.data.entity.quiz.QuizEntity;
 
 import androidx.room.Embedded;
 import androidx.room.Entity;
+import androidx.room.RoomWarnings;
 
 @Entity
 public class AnimalEntity extends VisibleEntity {
@@ -17,6 +18,7 @@ public class AnimalEntity extends VisibleEntity {
     private String classification;
     private String menaced;
     private boolean favorite;
+    @SuppressWarnings(RoomWarnings.PRIMARY_KEY_FROM_EMBEDDED_IS_DROPPED)
     @Embedded
     private QuizEntity quiz;
     private String picture;

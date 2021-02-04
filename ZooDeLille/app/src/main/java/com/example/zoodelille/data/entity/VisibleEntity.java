@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.room.Embedded;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+import androidx.room.RoomWarnings;
 
 @Entity
 public class VisibleEntity {
@@ -11,6 +12,7 @@ public class VisibleEntity {
     @PrimaryKey
     private int id;
     private String name;
+    @SuppressWarnings(RoomWarnings.PRIMARY_KEY_FROM_EMBEDDED_IS_DROPPED)
     @Embedded
     private ZooPositionEntity zooPositionEntity;
 
