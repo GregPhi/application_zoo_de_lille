@@ -25,8 +25,10 @@ public class AnimalInfoViewPagerAdapter extends FragmentStateAdapter {
             return ZoneGeoAnimalFragment.newInstance();
         }
         if(position == 2){
+            DoYouKnowAnimalFragment.passAnimal(animalItemViewModel);
             return DoYouKnowAnimalFragment.newInstance();
         }
+        DescriptionAnimalFragment.passAnimal(animalItemViewModel);
         return DescriptionAnimalFragment.newInstance();
     }
 
