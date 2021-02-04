@@ -1,9 +1,7 @@
 package com.example.zoodelille.view.model;
 
-import com.example.zoodelille.data.api.object.animal.Animal;
 import com.example.zoodelille.data.entity.animal.AnimalEntity;
 import com.example.zoodelille.data.repository.animal.AnimalRepository;
-import com.example.zoodelille.data.repository.animal.mapper.AnimalToAnimalEntity;
 import com.example.zoodelille.view.animal.adapter.AnimalItemViewModel;
 import com.example.zoodelille.view.animal.mapper.AnimalToAnimalItemViewModel;
 
@@ -11,7 +9,6 @@ import java.util.List;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableCompletableObserver;

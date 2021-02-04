@@ -5,11 +5,9 @@ import com.example.zoodelille.data.entity.animal.AnimalEntity;
 
 import java.util.List;
 
-import androidx.room.Query;
 import io.reactivex.Completable;
 import io.reactivex.Flowable;
 import io.reactivex.Single;
-import io.reactivex.functions.BiFunction;
 
 public class AnimalLocalDataSource {
     private final ProjectDatabase projectDatabase;

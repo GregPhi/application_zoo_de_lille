@@ -11,7 +11,6 @@ import java.util.List;
 import io.reactivex.Completable;
 import io.reactivex.Flowable;
 import io.reactivex.Single;
-import io.reactivex.functions.BiFunction;
 
 public class AnimalRepository {
     private final AnimalLocalDataSource animalLocalDataSource;

@@ -1,5 +1,10 @@
 package com.example.zoodelille.view.map.fragment;
 
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
 import com.example.zoodelille.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -9,11 +14,6 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.GroundOverlay;
 import com.google.android.gms.maps.model.GroundOverlayOptions;
 import com.google.android.gms.maps.model.LatLng;
-
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -62,7 +62,7 @@ public class MapFragment extends Fragment
                 .anchor(0f, 1f)
                 .position(NEAR_ZOO_DE_LILLE, 310f, 203f)
                 .bearing(-17));
-        map.setMinZoomPreference(19f);
+        map.setMinZoomPreference(5f);
 
         // Override the default content description on the view, for accessibility mode.
         // Ideally this string would be localised.

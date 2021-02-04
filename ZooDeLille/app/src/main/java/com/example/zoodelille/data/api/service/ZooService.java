@@ -2,6 +2,7 @@ package com.example.zoodelille.data.api.service;
 
 import com.example.zoodelille.data.api.object.Zoo;
 import com.example.zoodelille.data.api.object.animal.Animal;
+import com.example.zoodelille.data.api.object.info.Info;
 
 import java.util.List;
 
@@ -14,6 +15,9 @@ public interface ZooService {
 
     @GET("version/")
     Single<Zoo> getVersion();
+
+    @GET("infos/")
+    Single<List<Info>> getAllInfos();
 
     @GET("animals/")
     Single<List<Animal>> getAllAnimals();
