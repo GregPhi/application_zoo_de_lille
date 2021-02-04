@@ -6,14 +6,18 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 import android.widget.Toolbar;
 
 import com.example.zoodelille.R;
 import com.example.zoodelille.data.di.DepencyInjector;
+import com.example.zoodelille.data.entity.animal.AnimalEntity;
 import com.example.zoodelille.view.animal.adapter.Action;
 import com.example.zoodelille.view.animal.adapter.AnimalItemViewModel;
 import com.example.zoodelille.view.animal.adapter.AnimalListAdapter;
 import com.example.zoodelille.view.animal.info.AnimalInfoActivity;
+import com.example.zoodelille.view.animal.mapper.AnimalToAnimalItemViewModel;
 import com.example.zoodelille.view.model.AnimalViewModel;
 
 import java.util.List;
@@ -50,7 +54,8 @@ public class AnimalFragment extends Fragment implements Action {
         super.onActivityCreated(savedInstanceState);
         setupRecyclerView();
         initRecyclerView();
-        toolbar = m_view.findViewById(R.id.toolbar_animals);
+        setupSwitch();
+        /*toolbar = m_view.findViewById(R.id.toolbar_animals);
         toolbar.inflateMenu(R.menu.animals_filter);
         toolbar.setTitle(R.string.animals);
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
@@ -58,16 +63,47 @@ public class AnimalFragment extends Fragment implements Action {
             public boolean onMenuItemClick(MenuItem item) {
                 if(item.getItemId()==R.id.animals_filter_alpha)
                 {
-                    // do something
+                    setupRecyclerViewWithAlphaFilter();
                 }
                 else if(item.getItemId()== R.id.animals_filter_like)
                 {
-                    // do something
+                    setupRecyclerViewWithLikeFilter();
                 }
                 else{
                     // do something
                 }
                 return false;
+            }
+        });*/
+    }
+
+    public void setupSwitch(){
+        final Switch switch_az = m_view.findViewById(R.id.switch_az);
+        final Switch switch_fav = m_view.findViewById(R.id.switch_fav);
+        switch_az.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(b){
+                    switch_fav.setChecked(false);
+                    setupRecyclerViewWithAlphaFilter();
+                }else{
+                    if(!switch_fav.isChecked()){
+                        initRecyclerView();
+                    }
+                }
+            }
+        });
+        switch_fav.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(b){
+                    switch_az.setChecked(false);
+                    setupRecyclerViewWithLikeFilter();
+                }else{
+                    if(!switch_az.isChecked()){
+                        initRecyclerView();
+                    }
+                }
             }
         });
     }
@@ -82,7 +118,7 @@ public class AnimalFragment extends Fragment implements Action {
 
     public void initRecyclerView(){
         animalViewModel = new ViewModelProvider(requireActivity(), DepencyInjector.getViewModelFactoryAnimal()).get(AnimalViewModel.class);
-        animalViewModel.getAnimals().observe(getViewLifecycleOwner(), new Observer<List<AnimalItemViewModel>>() {
+        animalViewModel.getAllAnimal().observe(getViewLifecycleOwner(), new Observer<List<AnimalItemViewModel>>() {
             @Override
             public void onChanged(List<AnimalItemViewModel> animalItemViewModels) {
                 animalListAdapter.setAnimals(animalItemViewModels);
@@ -90,15 +126,31 @@ public class AnimalFragment extends Fragment implements Action {
         });
     }
 
-    public void setupRecyclerViewWithAlphaFilter(){}
+    public void setupRecyclerViewWithAlphaFilter(){
+        animalViewModel = new ViewModelProvider(requireActivity(), DepencyInjector.getViewModelFactoryAnimal()).get(AnimalViewModel.class);
+        animalViewModel.getAllAnimalOnAZ_or_ZA(true).observe(getViewLifecycleOwner(), new Observer<List<AnimalItemViewModel>>() {
+            @Override
+            public void onChanged(List<AnimalItemViewModel> animalItemViewModels) {
+                animalListAdapter.setAnimals(animalItemViewModels);
+            }
+        });
+    }
 
-    public void setupRecyclerViewWithLikeFilter(){}
-
-    public void setupRecyclerViewWithAlimFilter(){}
+    public void setupRecyclerViewWithLikeFilter(){
+        animalViewModel = new ViewModelProvider(requireActivity(), DepencyInjector.getViewModelFactoryAnimal()).get(AnimalViewModel.class);
+        animalViewModel.getAllAnimalIsFavorite_or_Not(true).observe(getViewLifecycleOwner(), new Observer<List<AnimalItemViewModel>>() {
+            @Override
+            public void onChanged(List<AnimalItemViewModel> animalItemViewModels) {
+                animalListAdapter.setAnimals(animalItemViewModels);
+            }
+        });
+    }
 
     @Override
-    public void changeStatutOfFavorite(int id) {
-
+    public void changeStatutOfFavorite(AnimalItemViewModel animalItem) {
+        AnimalToAnimalItemViewModel animalToAnimalItemViewModel = new AnimalToAnimalItemViewModel();
+        AnimalEntity animalEntity = animalToAnimalItemViewModel.reverse(animalItem);
+        animalViewModel.changeFavoriteStatut(animalEntity);
     }
 
     @Override
