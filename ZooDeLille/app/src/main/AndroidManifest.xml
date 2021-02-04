@@ -36,6 +36,9 @@
             android:name=".view.info.fragment.InfoActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name=".view.animal.info.AnimalInfoActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".view.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
