@@ -11,6 +11,7 @@ import java.util.List;
 import io.reactivex.Completable;
 import io.reactivex.Flowable;
 import io.reactivex.Single;
+import io.reactivex.functions.BiFunction;
 
 public class AnimalRepository {
     private final AnimalLocalDataSource animalLocalDataSource;
@@ -33,12 +34,20 @@ public class AnimalRepository {
         return animalLocalDataSource.deleteAnimalWithId(id);
     }
 
+    public Single<AnimalEntity> getAnimalEntity(int id){
+        return animalLocalDataSource.getAnimalEntity(id);
+    }
+
     public Flowable<List<AnimalEntity>> getAllAnimal(){
         return animalLocalDataSource.getAllAnimal();
     }
 
-    public Single<AnimalEntity> getAnimalEntity(int id){
-        return animalLocalDataSource.getAnimalEntity(id);
+    public Flowable<List<AnimalEntity>> getAllAnimalOnAZ_or_ZA(boolean isAsc){
+        return animalLocalDataSource.getAllAnimalOnAZ_or_ZA(isAsc);
+    }
+
+    public Flowable<List<AnimalEntity>> getAllAnimalIsFavorite_or_Not(boolean isFavorite){
+        return animalLocalDataSource.getAllAnimalIsFavorite_or_Not(isFavorite);
     }
 
     public Single<List<Animal>> getAllAnimals(){
