@@ -90,6 +90,16 @@ public class AnimalEntity extends VisibleEntity {
         this.favorite = favorite;
     }
 
+    public void setFav(){ this.favorite = true; }
+
+    public void setOppoFav(){
+        if(favorite){
+            favorite = false;
+        }else{
+            favorite = true;
+        }
+    }
+
     public QuizEntity getQuiz() {
         return quiz;
     }
