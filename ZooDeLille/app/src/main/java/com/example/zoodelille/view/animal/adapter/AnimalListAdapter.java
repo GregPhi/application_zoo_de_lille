@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class AnimalListAdapter extends RecyclerView.Adapter<AnimalListAdapter.AnimalListViewHolder> {
@@ -51,6 +52,7 @@ public class AnimalListAdapter extends RecyclerView.Adapter<AnimalListAdapter.An
 
     public class AnimalListViewHolder extends RecyclerView.ViewHolder{
         private final View view;
+        private final ConstraintLayout cardview_animal;
         private final ImageView animal_icon;
         private final TextView animal_name;
         private final ImageButton animal_favorite;
@@ -59,13 +61,14 @@ public class AnimalListAdapter extends RecyclerView.Adapter<AnimalListAdapter.An
         public AnimalListViewHolder(@NonNull View itemView) {
             super(itemView);
             this.view = itemView;
+            this.cardview_animal = view.findViewById(R.id.cardview_animal);
             this.animal_icon = view.findViewById(R.id.animal_icon);
             this.animal_name = view.findViewById(R.id.animal_name);
             this.animal_favorite = view.findViewById(R.id.animal_favorite);
         }
 
         public void setupButton(){
-            animal_icon.setOnClickListener(new View.OnClickListener() {
+            this.cardview_animal.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     action.displayAnimal(animalItem);
@@ -74,9 +77,19 @@ public class AnimalListAdapter extends RecyclerView.Adapter<AnimalListAdapter.An
             this.animal_favorite.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    action.changeStatutOfFavorite(animalItem.getId());
+                    animalItem.setOppoFav();
+                    setAnimalFavoriteBackground();
+                    action.changeStatutOfFavorite(animalItem);
                 }
             });
+        }
+
+        public void setAnimalFavoriteBackground(){
+            if(animalItem.isFavorite()){
+                this.animal_favorite.setBackgroundResource(R.drawable.drawable_favorite);
+            }else{
+                this.animal_favorite.setBackgroundResource(R.drawable.drawable_unfavorite);
+            }
         }
 
         public void setupViewHolder(AnimalItemViewModel animal){
@@ -87,6 +100,7 @@ public class AnimalListAdapter extends RecyclerView.Adapter<AnimalListAdapter.An
                     .transition(DrawableTransitionOptions.withCrossFade())
                     .into(animal_icon);
             animal_name.setText(animalItem.getName());
+            setAnimalFavoriteBackground();
             setupButton();
         }
     }
