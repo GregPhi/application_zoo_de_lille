@@ -48,7 +48,7 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/prices"
+        android:id="@+id/pricesEntity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -107,7 +107,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/prices">
+        app:layout_constraintTop_toBottomOf="@+id/pricesEntity">
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/frag_tab_shifting"
