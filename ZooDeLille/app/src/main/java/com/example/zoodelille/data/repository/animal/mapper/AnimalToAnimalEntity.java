@@ -1,7 +1,6 @@
 package com.example.zoodelille.data.repository.animal.mapper;
 
 import com.example.zoodelille.data.api.object.animal.Animal;
-import com.example.zoodelille.data.entity.ZooPositionEntity;
 import com.example.zoodelille.data.entity.animal.AnimalEntity;
 import com.example.zoodelille.data.entity.quiz.QuizEntity;
 import com.example.zoodelille.data.repository.quiz.mapper.QuizToQuizEntity;
@@ -12,7 +11,6 @@ import java.util.List;
 
 public class AnimalToAnimalEntity {
     private static final QuizToQuizEntity quizToQuizEntity = new QuizToQuizEntity();
-    private static final ZooPositionToZooPositionEntity zooPositionToZooPositionEntity = new ZooPositionToZooPositionEntity();
 
     public AnimalEntity map(Animal animal){
         AnimalEntity animalEntity = new AnimalEntity();
@@ -20,8 +18,7 @@ public class AnimalToAnimalEntity {
         animalEntity.setId(animal.getId());
         animalEntity.setName(animal.getName());
 
-        ZooPositionEntity zooPositionEntity = zooPositionToZooPositionEntity.map(animal.getZooPosition());
-        animalEntity.setZooPositionEntity(zooPositionEntity);
+        animalEntity.setZooPositionEntity(ZooPositionToZooPositionEntity.map(animal.getZooPosition()));
         QuizEntity quizEntity = quizToQuizEntity.map(animal.getQuiz());
         animalEntity.setQuiz(quizEntity);
 
