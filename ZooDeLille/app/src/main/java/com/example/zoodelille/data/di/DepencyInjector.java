@@ -8,10 +8,14 @@ import com.example.zoodelille.data.db.ProjectDatabase;
 import com.example.zoodelille.data.repository.animal.AnimalRepository;
 import com.example.zoodelille.data.repository.animal.local.AnimalLocalDataSource;
 import com.example.zoodelille.data.repository.animal.remote.AnimalRemoteDataSource;
+import com.example.zoodelille.data.repository.info.InfoRepository;
+import com.example.zoodelille.data.repository.info.local.InfoLocalDataSource;
+import com.example.zoodelille.data.repository.info.remote.InfoRemoteDataSource;
 import com.example.zoodelille.data.repository.zoo.ZooRepository;
 import com.example.zoodelille.data.repository.zoo.local.ZooLocalDataSource;
 import com.example.zoodelille.data.repository.zoo.remote.ZooRemoteDataSource;
 import com.example.zoodelille.view.model.ViewModelFactoryAnimal;
+import com.example.zoodelille.view.model.ViewModelFactoryInfo;
 import com.example.zoodelille.view.model.ViewModelFactoryZoo;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.google.gson.Gson;
@@ -27,13 +31,19 @@ public class DepencyInjector {
     private static ZooService zooService;
     private static Retrofit retrofit;
     private static Gson gson;
+
     private static AnimalRepository animalRepository;
     private static ZooRepository zooRepository;
+    private static InfoRepository infoRepository;
+
     private static ProjectDatabase projectDatabase;
+
     @SuppressLint("StaticFieldLeak")
     private static Context applyContext;
+
     private static ViewModelFactoryAnimal viewModelFactoryAnimal;
     private static ViewModelFactoryZoo viewModelFactoryZoo;
+    private static ViewModelFactoryInfo viewModelFactoryInfo;
 
     public static ViewModelFactoryAnimal getViewModelFactoryAnimal() {
         if (viewModelFactoryAnimal == null) {
@@ -49,6 +59,13 @@ public class DepencyInjector {
         return viewModelFactoryZoo;
     }
 
+    public static ViewModelFactoryInfo getViewModelFactoryInfo() {
+        if (viewModelFactoryInfo == null) {
+            viewModelFactoryInfo = new ViewModelFactoryInfo(getInfoRepository());
+        }
+        return viewModelFactoryInfo;
+    }
+
     public static AnimalRepository getAnimalRepository(){
         if(animalRepository == null){
             animalRepository = new AnimalRepository(new AnimalLocalDataSource(getProjectDatabase()), new AnimalRemoteDataSource(getZooService()));
@@ -61,6 +78,13 @@ public class DepencyInjector {
             zooRepository = new ZooRepository(new ZooLocalDataSource(getProjectDatabase()), new ZooRemoteDataSource(getZooService()), new AnimalLocalDataSource(getProjectDatabase()), new AnimalRemoteDataSource(getZooService()));
         }
         return zooRepository;
+    }
+
+    public static InfoRepository getInfoRepository(){
+        if(infoRepository == null){
+            infoRepository = new InfoRepository(new InfoLocalDataSource(getProjectDatabase()), new InfoRemoteDataSource(getZooService()));
+        }
+        return infoRepository;
     }
 
     public static ZooService getZooService(){
