@@ -17,7 +17,7 @@ public interface ZooService {
     Single<Zoo> getVersion();
 
     @GET("infos/")
-    Single<Info> getAllInfos();
+    Single<List<Info>> getAllInfos();
 
     @GET("animals/")
     Single<List<Animal>> getAllAnimals();
