@@ -21,6 +21,7 @@
       <w>entre</w>
       <w>entrée</w>
       <w>estimée</w>
+      <w>exceptionnellement</w>
       <w>favori</w>
       <w>fermé</w>
       <w>gratuit</w>
@@ -33,6 +34,7 @@
       <w>jour</w>
       <w>jours</w>
       <w>lomme</w>
+      <w>lundi</w>
       <w>mois</w>
       <w>niveau</w>
       <w>ouvert</w>
@@ -46,7 +48,10 @@
       <w>régime</w>
       <w>tarif</w>
       <w>textview</w>
+      <w>tous</w>
+      <w>vendredi</w>
       <w>visite</w>
+      <w>vlille</w>
       <w>zoodelille</w>
     </words>
   </dictionary>
