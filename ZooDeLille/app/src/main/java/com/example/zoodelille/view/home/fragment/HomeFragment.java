@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.zoodelille.R;
-import com.example.zoodelille.view.info.fragment.InfoActivity;
+import com.example.zoodelille.view.info.InfoActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
