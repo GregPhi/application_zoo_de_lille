@@ -7,12 +7,14 @@ import com.example.zoodelille.data.entity.info.prices.PricesEntity;
 import androidx.room.Embedded;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+import androidx.room.RoomWarnings;
 
 @Entity
 public class InfoEntity {
     @PrimaryKey
     private int info_id;
     private String name_zoo;
+    @SuppressWarnings(RoomWarnings.PRIMARY_KEY_FROM_EMBEDDED_IS_DROPPED)
     @Embedded
     private HoursEntity hoursEntity;
     private String address;
@@ -20,12 +22,18 @@ public class InfoEntity {
     private String street;
     private String mail;
     private String number;
+    @SuppressWarnings(RoomWarnings.PRIMARY_KEY_FROM_EMBEDDED_IS_DROPPED)
     @Embedded
     private AccessEntity accessEntity;
+    @SuppressWarnings(RoomWarnings.PRIMARY_KEY_FROM_EMBEDDED_IS_DROPPED)
     @Embedded
     private PricesEntity pricesEntity;
 
     public InfoEntity() {}
+
+    public InfoEntity(int id){
+        this.info_id = id;
+    }
 
     public int getInfo_id() {
         return info_id;
