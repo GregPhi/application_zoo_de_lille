@@ -68,6 +68,14 @@
     <string name="zone_geo">Zone geo</string>
     <string name="do_you_know">Le saviez-vous ?</string>
 
+    <!-- INFO -->
+    <string name="hour_week_summer">En semaine du Lundi au Vendredi de %1$d h à %2$d h</string>
+    <string name="hour_week_winter">Tous les jours de %1$d h à %2$d h</string>
+    <string name="hour_weekend">En Week-End du Lundi au Vendredi de %1$d h à %2$d h</string>
+    <string name="hour_close_day">Fermé le %1$s</string>
+    <string name="exceptional_opening">Ouvert exceptionnellement le(s) %1$s</string>
+    <string name="closure">Fermé du %1$s au %2$s</string>
+
     <!-- OTHERS -->
     <string name="back">Retour</string>
 </resources>
