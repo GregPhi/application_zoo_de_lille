@@ -6,7 +6,7 @@ import com.example.zoodelille.data.entity.info.InfoEntity;
 import java.util.List;
 
 import io.reactivex.Completable;
-import io.reactivex.Single;
+import io.reactivex.Flowable;
 
 public class InfoLocalDataSource {
     private final ProjectDatabase projectDatabase;
@@ -15,15 +15,15 @@ public class InfoLocalDataSource {
         this.projectDatabase = database;
     }
 
-    public Completable addInfo(InfoEntity zooEntity){
-        return projectDatabase.infoDao().addInfo(zooEntity);
+    public Completable addInfo(InfoEntity infoEntity){
+        return projectDatabase.infoDao().addInfo(infoEntity);
     }
 
     public Completable deleteInfoWithId(int id){
         return projectDatabase.infoDao().deleteInfoWithId(id);
     }
 
-    public Single<List<InfoEntity>> getInfoEntity(){
+    public Flowable<List<InfoEntity>> getInfoEntity(){
         return projectDatabase.infoDao().getInfoEntity();
     }
 }

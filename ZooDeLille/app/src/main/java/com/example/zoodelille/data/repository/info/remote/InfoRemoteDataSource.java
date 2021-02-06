@@ -5,6 +5,8 @@ import com.example.zoodelille.data.api.service.ZooService;
 import com.example.zoodelille.data.entity.info.InfoEntity;
 import com.example.zoodelille.data.repository.info.mapper.InfoToInfoEntity;
 
+import java.util.List;
+
 import io.reactivex.Single;
 import io.reactivex.functions.Function;
 
@@ -17,16 +19,16 @@ public class InfoRemoteDataSource {
         this.zooService = zooService;
     }
 
-    public Single<Info> getAllInfos(){
+    public Single<List<Info>> getAllInfos(){
         return zooService.getAllInfos();
     }
 
     public Single<InfoEntity> getInfoEntity(){
         return zooService.getAllInfos()
-                .map(new Function<Info, InfoEntity>() {
+                .map(new Function<List<Info>, InfoEntity>() {
                     @Override
-                    public InfoEntity apply(Info info) throws Exception {
-                        return infoToInfoEntity.map(info);
+                    public InfoEntity apply(List<Info> info) throws Exception {
+                        return (info.isEmpty()) ? new InfoEntity() : infoToInfoEntity.map(info.get(0));
                     }
                 });
     }

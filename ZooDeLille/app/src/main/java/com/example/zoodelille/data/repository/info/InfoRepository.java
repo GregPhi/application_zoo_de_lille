@@ -8,6 +8,7 @@ import com.example.zoodelille.data.repository.info.remote.InfoRemoteDataSource;
 import java.util.List;
 
 import io.reactivex.Completable;
+import io.reactivex.Flowable;
 import io.reactivex.Single;
 
 public class InfoRepository {
@@ -27,11 +28,11 @@ public class InfoRepository {
         return infoLocalDataSource.deleteInfoWithId(id);
     }
 
-    public Single<List<InfoEntity>> getInfoEntity(){
+    public Flowable<List<InfoEntity>> getInfoEntity(){
         return infoLocalDataSource.getInfoEntity();
     }
 
-    public Single<Info> getAllInfos(){
+    public Single<List<Info>> getAllInfos(){
         return infoRemoteDataSource.getAllInfos();
     }
 }
