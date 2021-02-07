@@ -28,8 +28,8 @@ public class ViewPagerAdapterContact extends FragmentStateAdapter {
             return PhoneFragment.getInstance();
         }
         if(position == 2){
-            MailFragment.passMail(mail);
-            return MailFragment.getInstance();
+            SocialNetworkFragment.passMail(mail);
+            return SocialNetworkFragment.getInstance();
         }
         AddressFragment.passAddress(address);
         return AddressFragment.getInstance();

@@ -1,9 +1,12 @@
 package com.example.zoodelille.view.info.fragment.contact;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.zoodelille.R;
@@ -35,6 +38,13 @@ public class AddressFragment extends Fragment {
         TextView contact_address = rootView.findViewById(R.id.contact_address);
         contact_address.setText(address);
 
+        Button start_route = rootView.findViewById(R.id.start_route);
+        start_route.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://maps.google.com/maps?daddr=50.638200,3.047915 (Zoo de Lille)")));
+            }
+        });
         return rootView;
     }
 }
