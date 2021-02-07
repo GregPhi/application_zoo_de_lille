@@ -78,4 +78,6 @@
 
     <!-- OTHERS -->
     <string name="back">Retour</string>
+    <string name="itineraire">Itinéraire</string>
+    <string name="facebook">Facebook</string>
 </resources>
