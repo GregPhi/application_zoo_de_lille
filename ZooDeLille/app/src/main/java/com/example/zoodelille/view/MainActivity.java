@@ -1,5 +1,8 @@
 package com.example.zoodelille.view;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -104,13 +107,28 @@ public class MainActivity extends AppCompatActivity {
     public void setupZooVersion(){
         if(zooViewModel == null){
             zooViewModel = new ViewModelProvider(this, DepencyInjector.getViewModelFactoryZoo()).get(ZooViewModel.class);
-            zooViewModel.checkVersion();
-            zooViewModel.getCheckVersionEvent().observeForever(new Observer<Event<String>>() {
-                @Override
-                public void onChanged(Event<String> stringEvent) {
-                    //Do nothing
-                }
-            });
+            if(isConnected()){
+                zooViewModel.checkVersion();
+                zooViewModel.getCheckVersionEvent().observeForever(new Observer<Event<String>>() {
+                    @Override
+                    public void onChanged(Event<String> stringEvent) {
+                        //Do nothing
+                    }
+                });
+            }
         }
+    }
+
+    public boolean isConnected(){
+        ConnectivityManager connMgr = (ConnectivityManager)
+                getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = null;
+        if (connMgr != null) {
+            networkInfo = connMgr.getActiveNetworkInfo();
+        }
+        if (networkInfo != null && networkInfo.isConnected()) {
+            return true;
+        }
+        return false;
     }
 }
