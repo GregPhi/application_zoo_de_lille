@@ -19,12 +19,15 @@ import com.example.zoodelille.view.info.fragment.access.MetroFragment;
 import com.example.zoodelille.view.info.fragment.access.VLilleFragment;
 import com.example.zoodelille.view.info.fragment.access.ViewPagerAdapterAccess;
 import com.example.zoodelille.view.info.fragment.contact.AddressFragment;
-import com.example.zoodelille.view.info.fragment.contact.MailFragment;
 import com.example.zoodelille.view.info.fragment.contact.PhoneFragment;
+import com.example.zoodelille.view.info.fragment.contact.SocialNetworkFragment;
 import com.example.zoodelille.view.info.fragment.contact.ViewPagerAdapterContact;
 import com.example.zoodelille.view.info.fragment.hours.SummerFragment;
 import com.example.zoodelille.view.info.fragment.hours.ViewPagerAdapterHours;
 import com.example.zoodelille.view.info.fragment.hours.WinterFragment;
+import com.example.zoodelille.view.info.fragment.prices.PricesOnGroupFragment;
+import com.example.zoodelille.view.info.fragment.prices.PricesOneDayFragment;
+import com.example.zoodelille.view.info.fragment.prices.ViewPagerAdapterPrices;
 import com.example.zoodelille.view.model.InfoViewModel;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
@@ -120,19 +123,38 @@ public class InfoActivity extends AppCompatActivity {
 
     public void pricesInfo(InfoEntity infoEntity){
         PricesEntity pricesEntity = infoEntity.getPricesEntity();
-
-        TextView prices_one_day = findViewById(R.id.prices_one_day);
-        prices_one_day.setText(pricesEntity.getPrices_one_day());
-
-        TextView prices_one_year = findViewById(R.id.prices_one_year);
-        prices_one_year.setText(pricesEntity.getPrices_one_year());
-
-        TextView prices_on_group = findViewById(R.id.prices_on_group);
-        prices_on_group.setText(pricesEntity.getPrices_on_group());
-
-        TextView prices_free = findViewById(R.id.prices_free);
-        //prices_free.setText(pricesEntity.getPrices_free());
-        prices_free.setVisibility(View.INVISIBLE);
+        //final String[] tabTitles = new String[]{PricesOneDayFragment.name, PricesOneYearFragment.name, PricesOnGroupFragment.name};
+        //final int[] tabIcons = new int[]{PricesOneDayFragment.icon, PricesOneYearFragment.icon, PricesOnGroupFragment.icon};
+        final String[] tabTitles = new String[]{PricesOneDayFragment.name, PricesOnGroupFragment.name};
+        final int[] tabIcons = new int[]{PricesOneDayFragment.icon, PricesOnGroupFragment.icon};
+        final ViewPager2 viewPager = findViewById(R.id.fragments_viewpager_prices);
+        final ViewPagerAdapterPrices viewPagerAdapter = new ViewPagerAdapterPrices(getSupportFragmentManager(), getLifecycle(), pricesEntity.getPrices_one_day(), pricesEntity.getPrices_one_year(), pricesEntity.getPrices_on_group());
+        viewPager.setAdapter(viewPagerAdapter);
+        final TabLayout tabLayout = findViewById(R.id.frag_tab_prices);
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {}
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {}
+        });
+        viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                tabLayout.selectTab(tabLayout.getTabAt(position));
+            }
+        });
+        new TabLayoutMediator(tabLayout, viewPager,
+                new TabLayoutMediator.TabConfigurationStrategy() {
+                    @Override
+                    public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
+                        tab.setText(tabTitles[position]);
+                        tab.setIcon(tabIcons[position]);
+                    }
+                }).attach();
     }
 
     public void setupViewPagerAccess(InfoEntity infoEntity){
@@ -173,10 +195,10 @@ public class InfoActivity extends AppCompatActivity {
         String address = infoEntity.getAddress()+"\n"+infoEntity.getZip_code()+" - "+infoEntity.getStreet();
         String mail = infoEntity.getMail();
         String number = infoEntity.getNumber();
-        final String[] tabTitles = new String[]{AddressFragment.name, PhoneFragment.name, MailFragment.name};
-        final int[] tabIcons = new int[]{AddressFragment.icon, PhoneFragment.icon, MailFragment.icon};
+        final String[] tabTitles = new String[]{AddressFragment.name, PhoneFragment.name, SocialNetworkFragment.name};
+        final int[] tabIcons = new int[]{AddressFragment.icon, PhoneFragment.icon, SocialNetworkFragment.icon};
         final ViewPager2 viewPager = findViewById(R.id.fragments_viewpager_contact);
-        final ViewPagerAdapterContact viewPagerAdapter = new ViewPagerAdapterContact(getSupportFragmentManager(), getLifecycle(), address, mail, number);
+        final ViewPagerAdapterContact viewPagerAdapter = new ViewPagerAdapterContact(getSupportFragmentManager(), getLifecycle(), address, number, mail);
         viewPager.setAdapter(viewPagerAdapter);
         final TabLayout tabLayout = findViewById(R.id.frag_tab_contact);
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
