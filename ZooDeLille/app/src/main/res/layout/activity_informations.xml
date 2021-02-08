@@ -6,156 +6,197 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/button_to_home"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="36dp"
-        android:background="@drawable/ic_baseline_expand_more_24"
-        android:text="@string/back_home"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <RelativeLayout
-        android:id="@+id/timetable"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/button_to_home"
-        app:layout_constraintTop_toBottomOf="@+id/button_to_home">
-
-
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/frag_tab_timetable"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:tabIndicatorColor="#FFFFFF"
-            tools:ignore="MissingConstraints" />
-
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/fragments_viewpager_timetable"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/frag_tab_timetable" />
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/prices"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/timetable">
+        android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content" >
 
-            <TextView
-                android:id="@+id/textView2"
+            <Button
+                android:id="@+id/button_to_home"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:background="@drawable/ic_baseline_expand_less_24"
+                android:text="@string/back_home"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Space
+                android:id="@+id/space1"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/button_to_home" />
+
+            <RelativeLayout
+                android:id="@+id/timetable"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/prices_adultes_gratuit"
+                app:layout_constraintTop_toBottomOf="@+id/space1">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.tabs.TabLayout
+                        android:id="@+id/frag_tab_timetable"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tabBackground="@color/DarkGreen"
+                        app:tabIndicatorColor="#FFFFFF"
+                        app:tabSelectedTextColor="@color/LighterGreen"
+                        tools:ignore="MissingConstraints" />
+
+                    <androidx.viewpager2.widget.ViewPager2
+                        android:id="@+id/fragments_viewpager_timetable"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@+id/frag_tab_timetable" />
+
+                    <TextView
+                        android:id="@+id/hour_exceptional_opening"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="60dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/frag_tab_timetable" />
+
+                    <TextView
+                        android:id="@+id/hour_closure"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/hour_exceptional_opening" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </RelativeLayout>
+
+            <Space
+                android:id="@+id/space2"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toBottomOf="@id/timetable" />
 
-            </TextView>
-
-            <TextView
-                android:id="@+id/textView3"
+            <RelativeLayout
+                android:id="@+id/prices"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/prices_adultes_payant"
+                app:layout_constraintTop_toBottomOf="@id/space2">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.tabs.TabLayout
+                        android:id="@+id/frag_tab_prices"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tabBackground="@color/DarkGreen"
+                        app:tabIndicatorColor="#FFFFFF"
+                        app:tabSelectedTextColor="@color/LighterGreen"
+                        tools:ignore="MissingConstraints" />
+
+                    <androidx.viewpager2.widget.ViewPager2
+                        android:id="@+id/fragments_viewpager_prices"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/frag_tab_prices" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </RelativeLayout>
+
+            <Space
+                android:id="@+id/space3"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView2">
+                app:layout_constraintTop_toBottomOf="@id/prices" />
 
-            </TextView>
-
-            <TextView
-                android:id="@+id/textView4"
+            <RelativeLayout
+                android:id="@+id/shifting"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/prices_enfants_payant"
+                app:layout_constraintTop_toBottomOf="@+id/space3">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.tabs.TabLayout
+                        android:id="@+id/frag_tab_shifting"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tabBackground="@color/DarkGreen"
+                        app:tabIndicatorColor="#FFFFFF"
+                        app:tabSelectedTextColor="@color/LighterGreen"
+                        tools:ignore="MissingConstraints" />
+
+                    <androidx.viewpager2.widget.ViewPager2
+                        android:id="@+id/fragments_viewpager_shifting"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/frag_tab_shifting" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </RelativeLayout>
+
+            <Space
+                android:id="@+id/space4"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView3">
+                app:layout_constraintTop_toBottomOf="@id/shifting" />
 
-            </TextView>
-
-            <TextView
+            <RelativeLayout
+                android:id="@+id/contact"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/prices_enfants_gratuit"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView4">
+                app:layout_constraintTop_toBottomOf="@+id/space4">
 
-            </TextView>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.tabs.TabLayout
+                        android:id="@+id/frag_tab_contact"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:tabBackground="@color/DarkGreen"
+                        app:tabIndicatorColor="#FFFFFF"
+                        app:tabSelectedTextColor="@color/LighterGreen"
+                        tools:ignore="MissingConstraints"
+                        tools:layout_editor_absoluteX="0dp"
+                        tools:layout_editor_absoluteY="0dp" />
+
+                    <androidx.viewpager2.widget.ViewPager2
+                        android:id="@+id/fragments_viewpager_contact"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/frag_tab_contact" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </RelativeLayout>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/shifting"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/prices">
-
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/frag_tab_shifting"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:tabIndicatorColor="#FFFFFF"
-            tools:ignore="MissingConstraints" />
-
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/fragments_viewpager_shifting"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/frag_tab_shifting" />
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/contact"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/shifting">
-
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/frag_tab_contact"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:tabIndicatorColor="#FFFFFF"
-            tools:ignore="MissingConstraints" />
-
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/fragments_viewpager_contact"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/frag_tab_contact" />
-
-    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

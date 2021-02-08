@@ -20,7 +20,6 @@ public interface ZooDao {
     @Update
     Completable update(ZooEntity zooEntity);
 
-
     @Query("SELECT * FROM zooentity")
     Single<List<ZooEntity>> findZooVersion();
 }
