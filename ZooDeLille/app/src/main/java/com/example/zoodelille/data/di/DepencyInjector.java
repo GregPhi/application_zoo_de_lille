@@ -11,11 +11,17 @@ import com.example.zoodelille.data.repository.animal.remote.AnimalRemoteDataSour
 import com.example.zoodelille.data.repository.info.InfoRepository;
 import com.example.zoodelille.data.repository.info.local.InfoLocalDataSource;
 import com.example.zoodelille.data.repository.info.remote.InfoRemoteDataSource;
+import com.example.zoodelille.data.repository.quiz.QuizRepository;
+import com.example.zoodelille.data.repository.quiz.answer.local.AnswerLocalDataSource;
+import com.example.zoodelille.data.repository.quiz.local.QuizLocalDataSource;
+import com.example.zoodelille.data.repository.quiz.question.local.QuestionLocalDataSource;
+import com.example.zoodelille.data.repository.quiz.remote.QuizRemoteDataSource;
 import com.example.zoodelille.data.repository.zoo.ZooRepository;
 import com.example.zoodelille.data.repository.zoo.local.ZooLocalDataSource;
 import com.example.zoodelille.data.repository.zoo.remote.ZooRemoteDataSource;
 import com.example.zoodelille.view.model.ViewModelFactoryAnimal;
 import com.example.zoodelille.view.model.ViewModelFactoryInfo;
+import com.example.zoodelille.view.model.ViewModelFactoryQuiz;
 import com.example.zoodelille.view.model.ViewModelFactoryZoo;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.google.gson.Gson;
@@ -35,6 +41,7 @@ public class DepencyInjector {
     private static AnimalRepository animalRepository;
     private static ZooRepository zooRepository;
     private static InfoRepository infoRepository;
+    private static QuizRepository quizRepository;
 
     private static ProjectDatabase projectDatabase;
 
@@ -44,6 +51,7 @@ public class DepencyInjector {
     private static ViewModelFactoryAnimal viewModelFactoryAnimal;
     private static ViewModelFactoryZoo viewModelFactoryZoo;
     private static ViewModelFactoryInfo viewModelFactoryInfo;
+    private static ViewModelFactoryQuiz viewModelFactoryQuiz;
 
     public static ViewModelFactoryAnimal getViewModelFactoryAnimal() {
         if (viewModelFactoryAnimal == null) {
@@ -64,6 +72,13 @@ public class DepencyInjector {
             viewModelFactoryInfo = new ViewModelFactoryInfo(getInfoRepository());
         }
         return viewModelFactoryInfo;
+    }
+
+    public static ViewModelFactoryQuiz getViewModelFactoryQuiz(){
+        if(viewModelFactoryQuiz == null){
+            viewModelFactoryQuiz = new ViewModelFactoryQuiz(getQuizRepository());
+        }
+        return viewModelFactoryQuiz;
     }
 
     public static AnimalRepository getAnimalRepository(){
@@ -87,6 +102,13 @@ public class DepencyInjector {
         return infoRepository;
     }
 
+    public static QuizRepository getQuizRepository(){
+        if(quizRepository == null){
+            quizRepository = new QuizRepository(new QuizLocalDataSource(getProjectDatabase()), new QuizRemoteDataSource(getZooService()), new QuestionLocalDataSource(getProjectDatabase()), new AnswerLocalDataSource(getProjectDatabase()));
+        }
+        return quizRepository;
+    }
+
     public static ZooService getZooService(){
         if(zooService == null){
             zooService = getRetrofit().create(ZooService.class);
@@ -98,6 +120,7 @@ public class DepencyInjector {
         if(retrofit == null){
             HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
             httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+            // add a time out
             OkHttpClient okHttpClient = new OkHttpClient.Builder()
                     .addInterceptor(httpLoggingInterceptor)
                     .addNetworkInterceptor(new StethoInterceptor())
