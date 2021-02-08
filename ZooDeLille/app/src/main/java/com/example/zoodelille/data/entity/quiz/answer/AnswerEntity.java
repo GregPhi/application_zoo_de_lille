@@ -1,6 +1,5 @@
 package com.example.zoodelille.data.entity.quiz.answer;
 
-import com.example.zoodelille.data.entity.quiz.QuizEntity;
 import com.example.zoodelille.data.entity.quiz.question.QuestionEntity;
 
 import androidx.annotation.NonNull;
