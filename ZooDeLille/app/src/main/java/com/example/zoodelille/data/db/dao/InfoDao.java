@@ -21,4 +21,13 @@ public interface InfoDao {
 
     @Query("SELECT * FROM infoentity")
     Flowable<List<InfoEntity>> getInfoEntity();
+
+    @Query("SELECT annual_closure_oldYear FROM infoentity")
+    String getAnnualClosureOldYear();
+
+    @Query("SELECT annual_closure_newYear FROM infoentity")
+    String getAnnualClosureNewYear();
+
+    @Query("SELECT exceptional_opening FROM infoentity")
+    String getExceptionalOpening();
 }
