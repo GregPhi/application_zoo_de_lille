@@ -1,10 +1,15 @@
 package com.example.zoodelille.data.repository.info.local;
 
+import android.os.AsyncTask;
+
 import com.example.zoodelille.data.db.ProjectDatabase;
 import com.example.zoodelille.data.entity.info.InfoEntity;
 
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
+import androidx.room.Query;
 import io.reactivex.Completable;
 import io.reactivex.Flowable;
 
@@ -25,5 +30,17 @@ public class InfoLocalDataSource {
 
     public Flowable<List<InfoEntity>> getInfoEntity(){
         return projectDatabase.infoDao().getInfoEntity();
+    }
+
+    public String getAnnualClosureOldYear(){
+        return projectDatabase.infoDao().getAnnualClosureOldYear();
+    }
+
+    public String getAnnualClosureNewYear(){
+        return projectDatabase.infoDao().getAnnualClosureNewYear();
+    }
+
+    public String getExceptionalOpening(){
+        return projectDatabase.infoDao().getExceptionalOpening();
     }
 }
