@@ -29,24 +29,22 @@ public class InfoViewModel extends ViewModel {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(new ResourceSubscriber<List<InfoEntity>>() {
-
                     @Override
                     public void onNext(List<InfoEntity> infoEntities) {
                         InfoEntity infoEntity = (infoEntities.isEmpty()) ? new InfoEntity(-1) : infoEntities.get(0);
                         infoEntityMutableLiveData.setValue(infoEntity);
-                        System.out.println("BIND FAVORITES");
                     }
-
                     @Override
                     public void onError(Throwable e) {
                         e.printStackTrace();
                     }
-
                     @Override
-                    public void onComplete() {
-                        //Do Nothing
-                    }
+                    public void onComplete() {}
                 }));
         return infoEntityMutableLiveData;
+    }
+
+    public boolean zooIsOpen(){
+        return infoRepository.zooIsOpen();
     }
 }
