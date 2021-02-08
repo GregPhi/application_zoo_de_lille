@@ -97,6 +97,7 @@ public class AnimalListAdapter extends RecyclerView.Adapter<AnimalListAdapter.An
             Glide.with(view)
                     .load(animalItem.getPicture())
                     .centerCrop()
+                    .circleCrop()
                     .transition(DrawableTransitionOptions.withCrossFade())
                     .into(animal_icon);
             animal_name.setText(animalItem.getName());

@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.Switch;
-import android.widget.Toolbar;
 
 import com.example.zoodelille.R;
 import com.example.zoodelille.data.di.DepencyInjector;
@@ -34,7 +33,6 @@ public class AnimalFragment extends Fragment implements Action {
     public static final int icon = R.drawable.drawable_animals;
 
     private View m_view;
-    private Toolbar toolbar;
     private AnimalViewModel animalViewModel;
     private AnimalListAdapter animalListAdapter;
 
@@ -56,26 +54,6 @@ public class AnimalFragment extends Fragment implements Action {
         setupRecyclerView();
         initRecyclerView();
         setupSwitch();
-        /*toolbar = m_view.findViewById(R.id.toolbar_animals);
-        toolbar.inflateMenu(R.menu.animals_filter);
-        toolbar.setTitle(R.string.animals);
-        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                if(item.getItemId()==R.id.animals_filter_alpha)
-                {
-                    setupRecyclerViewWithAlphaFilter();
-                }
-                else if(item.getItemId()== R.id.animals_filter_like)
-                {
-                    setupRecyclerViewWithLikeFilter();
-                }
-                else{
-                    // do something
-                }
-                return false;
-            }
-        });*/
     }
 
     public void setupSwitch(){
