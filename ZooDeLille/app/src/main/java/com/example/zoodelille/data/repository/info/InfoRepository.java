@@ -1,23 +1,17 @@
 package com.example.zoodelille.data.repository.info;
 
-import android.os.AsyncTask;
-
 import com.example.zoodelille.data.api.object.info.Info;
 import com.example.zoodelille.data.entity.info.InfoEntity;
 import com.example.zoodelille.data.repository.info.local.InfoLocalDataSource;
 import com.example.zoodelille.data.repository.info.remote.InfoRemoteDataSource;
 
-import org.reactivestreams.Subscriber;
-
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-import androidx.lifecycle.LiveData;
 import io.reactivex.Completable;
 import io.reactivex.Flowable;
 import io.reactivex.Single;
-import io.reactivex.SingleObserver;
 
 public class InfoRepository {
     private final InfoLocalDataSource infoLocalDataSource;
