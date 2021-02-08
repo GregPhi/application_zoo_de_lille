@@ -46,7 +46,7 @@ public class AnimalInfoActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),"Fiche audio",Toast.LENGTH_LONG).show();
             }
         });
-        ConstraintLayout play_quiz = findViewById(R.id.play_quiz);
+        ConstraintLayout play_quiz = findViewById(R.id.play_quiz_in_animal);
         play_quiz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
