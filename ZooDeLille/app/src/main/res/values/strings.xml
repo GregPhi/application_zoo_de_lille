@@ -33,12 +33,13 @@
     <!-- CARD VIEW ANIMAL -->
     <string name="animal_picture">Animal picture</string>
     <string name="animal_name">Animal name</string>
-    <string name="set_fav_animal">Set if route is favorite or not</string>
+    <string name="set_fav_animal">Set if animal is favorite or not</string>
     <!-- CARD VIEW QUIZ -->
     <string name="quiz_name">Quiz name</string>
     <string name="quiz_level">Level</string>
     <string name="quiz_best_score">Best score</string>
     <string name="quizzes_play">Play a quiz</string>
+    <string name="set_fav_quiz">Set if quiz is favorite or not</string>
 
     <!-- FRAGMENT ROUTES -->
     <string name="no_route">Pas de parcours en cours.</string>
@@ -81,4 +82,5 @@
     <string name="itineraire">Itinéraire</string>
     <string name="facebook">Facebook</string>
     <string name="actu_work">Actualité en préparation</string>
+    <string name="a_z">A-Z</string>
 </resources>
