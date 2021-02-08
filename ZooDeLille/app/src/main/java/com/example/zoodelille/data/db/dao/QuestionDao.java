@@ -28,4 +28,7 @@ public interface QuestionDao {
 
     @Query("SELECT * FROM questionEntity")
     Flowable<List<QuestionEntity>> getAllQuestion();
+
+    @Query("SELECT * FROM questionEntity WHERE quiz_id = :id")
+    Flowable<List<QuestionEntity>> getAllQuestionWithQuizId(int id);
 }

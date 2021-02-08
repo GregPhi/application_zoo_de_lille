@@ -26,6 +26,9 @@ public interface AnswerDao {
     @Query("SELECT * FROM answerEntity WHERE answer_id = :id")
     Single<AnswerEntity> getAnswerEntity(int id);
 
-    @Query("SELECT * FROM AnswerEntity")
+    @Query("SELECT * FROM answerEntity")
     Flowable<List<AnswerEntity>> getAllAnswer();
+
+    @Query("SELECT * FROM answerEntity WHERE question_id = :id")
+    Flowable<List<AnswerEntity>> getAllAnswerWithQuestionId(int id);
 }
