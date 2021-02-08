@@ -4,35 +4,24 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.zoodelille.BuildConfig;
 import com.example.zoodelille.R;
 import com.example.zoodelille.data.di.DepencyInjector;
-import com.example.zoodelille.data.entity.info.InfoEntity;
 import com.example.zoodelille.view.animal.fragment.AnimalFragment;
 import com.example.zoodelille.view.home.fragment.HomeFragment;
-import com.example.zoodelille.view.info.fragment.contact.AddressFragment;
-import com.example.zoodelille.view.info.fragment.contact.PhoneFragment;
-import com.example.zoodelille.view.info.fragment.contact.SocialNetworkFragment;
-import com.example.zoodelille.view.info.fragment.contact.ViewPagerAdapterContact;
 import com.example.zoodelille.view.map.fragment.MapFragment;
 import com.example.zoodelille.view.model.Event;
 import com.example.zoodelille.view.model.ZooViewModel;
 import com.example.zoodelille.view.qrcode.fragment.QRCodeFragment;
 import com.example.zoodelille.view.quiz.fragment.QuizFragment;
 import com.example.zoodelille.view.route.fragment.RouteFragment;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.widget.ViewPager2;
