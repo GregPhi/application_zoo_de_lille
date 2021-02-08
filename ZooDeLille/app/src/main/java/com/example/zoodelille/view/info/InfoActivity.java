@@ -34,12 +34,13 @@ import com.google.android.material.tabs.TabLayoutMediator;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.widget.ViewPager2;
 
 public class InfoActivity extends AppCompatActivity {
-    private Button button_to_home;
+    private ConstraintLayout button_to_home;
     private InfoViewModel infoViewModel;
     private Resources resources;
 
@@ -51,13 +52,27 @@ public class InfoActivity extends AppCompatActivity {
         button_to_home = findViewById(R.id.button_to_home);
         setButton_to_home();
         setupViewModel();
+
+        TextView open_or_not = findViewById(R.id.open_or_not);
+        //boolean open = infoViewModel.zooIsOpen();
+        boolean open = false;
+        if(open){
+            open_or_not.setText("OUVERT");
+            open_or_not.setBackgroundColor(getResources().getColor(R.color.LightGreen));
+        }else{
+            open_or_not.setText("FERME");
+            open_or_not.setBackgroundColor(getResources().getColor(R.color.design_default_color_error));
+        }
+
         infoViewModel.getInfoEntityMutableLiveData().observeForever(new Observer<InfoEntity>() {
             @Override
             public void onChanged(InfoEntity infoEntity) {
-                setupTimetable(infoEntity);
-                pricesInfo(infoEntity);
-                setupViewPagerAccess(infoEntity);
-                setupViewPagerContact(infoEntity);
+                if(infoEntity.getInfo_id()!=-1){
+                    setupTimetable(infoEntity);
+                    pricesInfo(infoEntity);
+                    setupViewPagerAccess(infoEntity);
+                    setupViewPagerContact(infoEntity);
+                }
             }
         });
     }
