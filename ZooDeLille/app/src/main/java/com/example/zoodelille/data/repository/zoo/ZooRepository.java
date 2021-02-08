@@ -59,13 +59,23 @@ public class ZooRepository {
                                     @Override
                                     public CompletableSource apply(Boolean versionApiAndLocalAreEquals) {
                                         if(!versionApiAndLocalAreEquals){
-                                            Single<List<AnimalEntity>> animal = animalRemoteDataSource.getAllAnimalsEntities();
+                                            Single<List<AnimalEntity>> animal = animalRemoteDataSource.getAllAnimalsEntities()
+                                                    .zipWith(animalLocalDataSource.getAllFavoriteAnimalId(), new BiFunction<List<AnimalEntity>, List<Integer>, List<AnimalEntity>>() {
+                                                        @Override
+                                                        public List<AnimalEntity> apply(List<AnimalEntity> animalEntities, List<Integer> ids) throws Exception {
+                                                            for(AnimalEntity animalEntity : animalEntities){
+                                                                if(ids.contains(animalEntity.getId())){
+                                                                    animalEntity.setFav();
+                                                                }
+                                                            }
+                                                            return animalEntities;
+                                                        }
+                                                    });
                                             Single<InfoEntity> info = infoRemoteDataSource.getInfoEntity();
                                             return Single.zip(animal, info,
                                                     new BiFunction<List<AnimalEntity>, InfoEntity, ZooVersion>() {
                                                         @Override
                                                         public ZooVersion apply(List<AnimalEntity> animalEntities, InfoEntity infoEntity) throws Exception {
-
                                                             return new ZooVersion(animalEntities,infoEntity);
                                                         }
                                                     })
