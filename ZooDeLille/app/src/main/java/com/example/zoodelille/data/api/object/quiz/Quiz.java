@@ -3,7 +3,6 @@ package com.example.zoodelille.data.api.object.quiz;
 
 import com.example.zoodelille.data.api.object.quiz.question.Question;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Quiz {
@@ -13,14 +12,6 @@ public class Quiz {
     private boolean make;
 
     public Quiz() {
-        this.questions = new ArrayList<>();
-        this.make = false;
-    }
-
-    public Quiz(int id, List<Question> questions, boolean make) {
-        this.id = id;
-        this.questions = questions;
-        this.make = make;
     }
 
     public int getId() {

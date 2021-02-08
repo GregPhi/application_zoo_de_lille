@@ -7,13 +7,6 @@ public class Answer {
     private boolean isGood;
 
     public Answer() {
-        isGood = false;
-    }
-
-    public Answer(String answer, String url_picture, boolean isGood) {
-        this.answer = answer;
-        this.url_picture = url_picture;
-        this.isGood = isGood;
     }
 
     public void setId(int id) {
