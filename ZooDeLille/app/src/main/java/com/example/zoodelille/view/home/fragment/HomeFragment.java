@@ -17,6 +17,7 @@ import java.util.Date;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 public class HomeFragment extends Fragment {
@@ -25,7 +26,7 @@ public class HomeFragment extends Fragment {
 
     private View m_view;
     private TextView welcome_to_zoo_date;
-    private Button button_to_info;
+    private ConstraintLayout button_to_info;
 
     public static HomeFragment newInstance(){
         return new HomeFragment();
@@ -43,7 +44,7 @@ public class HomeFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         welcome_to_zoo_date = m_view.findViewById(R.id.welcome_to_zoo_date);
-        button_to_info = m_view.findViewById(R.id.button_to_info);
+        button_to_info = m_view.findViewById(R.id.more_info);
         setWelcome_to_zoo_date();
         setButton_to_info();
     }
