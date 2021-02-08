@@ -30,7 +30,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class AnimalFragment extends Fragment implements Action {
-    private static final String name = "Animal";
+    public static final String name = "Animal";
+    public static final int icon = R.drawable.drawable_animals;
+
     private View m_view;
     private Toolbar toolbar;
     private AnimalViewModel animalViewModel;

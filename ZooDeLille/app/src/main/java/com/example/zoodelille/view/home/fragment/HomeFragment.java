@@ -20,7 +20,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 public class HomeFragment extends Fragment {
-    private static final String name = "Home";
+    public static final String name = "Home";
+    public static final int icon = R.drawable.drawable_home;
+
     private View m_view;
     private TextView welcome_to_zoo_date;
     private Button button_to_info;

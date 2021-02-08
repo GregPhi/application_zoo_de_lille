@@ -14,7 +14,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 public class QuizFragment extends Fragment {
-    private static final String name = "Quiz";
+    public static final String name = "Quiz";
+    public static final int icon = R.drawable.drawable_quiz;
+
     private View m_view;
     private Toolbar toolbar;
 

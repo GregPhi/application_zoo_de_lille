@@ -19,8 +19,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public class MapFragment extends Fragment
-        implements OnMapReadyCallback {
+public class MapFragment extends Fragment implements OnMapReadyCallback {
+    public static String name = "Plan";
+    public static final int icon = R.drawable.drawable_map;
 
     private static final LatLng ZOO_DE_LILLE = new LatLng(50.637903, 3.045939);
 

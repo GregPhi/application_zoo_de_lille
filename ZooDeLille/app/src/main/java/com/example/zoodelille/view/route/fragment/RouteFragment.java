@@ -14,7 +14,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 public class RouteFragment extends Fragment {
-    private static final String name = "Route";
+    public static final String name = "Parcours";
+    public static final int icon = R.drawable.drawable_routes;
+
     private View m_view;
     private Toolbar toolbar;
 

@@ -12,7 +12,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 public class QRCodeFragment extends Fragment {
-    private static final String name = "QRCode";
+    public static final String name = "QRCode";
+    public static final int icon = R.drawable.drawable_qrcode;
+
     private View m_view;
 
     public static QRCodeFragment newInstance(){
