@@ -1,8 +1,5 @@
 package com.example.zoodelille.data.api.object.info.access;
 
-
-import com.example.zoodelille.data.api.object.ZooPosition;
-
 import java.util.List;
 
 public class Access {
@@ -12,7 +9,6 @@ public class Access {
     private List<String> access_bus;
     private List<String> access_metro;
     private List<String> access_vlille;
-    private ZooPosition zooPosition;
 
     public Access() {
     }
@@ -63,13 +59,5 @@ public class Access {
 
     public void setAccess_vlille(List<String> access_vlille) {
         this.access_vlille = access_vlille;
-    }
-
-    public ZooPosition getZooPosition() {
-        return zooPosition;
-    }
-
-    public void setZooPosition(ZooPosition zooPosition) {
-        this.zooPosition = zooPosition;
     }
 }
