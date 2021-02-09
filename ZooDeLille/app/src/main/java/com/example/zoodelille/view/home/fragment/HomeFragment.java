@@ -9,7 +9,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.zoodelille.R;
+import com.example.zoodelille.data.di.DepencyInjector;
 import com.example.zoodelille.view.info.InfoActivity;
+import com.example.zoodelille.view.model.InfoViewModel;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -18,6 +20,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 public class HomeFragment extends Fragment {
     public static final String name = "Home";
@@ -54,6 +58,20 @@ public class HomeFragment extends Fragment {
         Date aujourdhui = new Date();
         formater = new SimpleDateFormat("'le' dd MMMM yyyy 'à' hh:mm:ss");
         welcome_to_zoo_date.setText(formater.format(aujourdhui));
+        InfoViewModel infoViewModel = new ViewModelProvider(this, DepencyInjector.getViewModelFactoryInfo()).get(InfoViewModel.class);
+        infoViewModel.zooIsOpen().observe(getViewLifecycleOwner(),new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                TextView open_or_not = m_view.findViewById(R.id.open_or_not);
+                if(aBoolean){
+                    open_or_not.setText("OUVERT");
+                    open_or_not.setBackgroundColor(getResources().getColor(R.color.LightGreen));
+                }else{
+                    open_or_not.setText("FERME");
+                    open_or_not.setBackgroundColor(getResources().getColor(R.color.design_default_color_error));
+                }
+            }
+        });
     }
 
     public void setButton_to_info(){
