@@ -13,10 +13,9 @@ public class ViewModelFactoryQuiz implements ViewModelProvider.Factory {
         this.quizRepository = quizRepository;
     }
 
-    @NonNull
     @Override
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
-        if (modelClass.isAssignableFrom(ZooViewModel.class)) {
+        if (modelClass.isAssignableFrom(QuizViewModel.class)) {
             return (T) new QuizViewModel(quizRepository);
         }
         //Handle favorite view model case
