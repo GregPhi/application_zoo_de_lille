@@ -52,16 +52,19 @@ public class InfoActivity extends AppCompatActivity {
         setButton_to_home();
         setupViewModel();
 
-        TextView open_or_not = findViewById(R.id.open_or_not);
-        //boolean open = infoViewModel.zooIsOpen();
-        boolean open = false;
-        if(open){
-            open_or_not.setText("OUVERT");
-            open_or_not.setBackgroundColor(getResources().getColor(R.color.LightGreen));
-        }else{
-            open_or_not.setText("FERME");
-            open_or_not.setBackgroundColor(getResources().getColor(R.color.design_default_color_error));
-        }
+        infoViewModel.zooIsOpen().observeForever(new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                TextView open_or_not = findViewById(R.id.open_or_not);
+                if(aBoolean){
+                    open_or_not.setText("OUVERT");
+                    open_or_not.setBackgroundColor(getResources().getColor(R.color.LightGreen));
+                }else{
+                    open_or_not.setText("FERME");
+                    open_or_not.setBackgroundColor(getResources().getColor(R.color.design_default_color_error));
+                }
+            }
+        });
 
         infoViewModel.getInfoEntityMutableLiveData().observeForever(new Observer<InfoEntity>() {
             @Override
