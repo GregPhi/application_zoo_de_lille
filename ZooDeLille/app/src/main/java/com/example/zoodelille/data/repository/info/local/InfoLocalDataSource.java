@@ -7,6 +7,7 @@ import java.util.List;
 
 import io.reactivex.Completable;
 import io.reactivex.Flowable;
+import io.reactivex.Single;
 
 public class InfoLocalDataSource {
     private final ProjectDatabase projectDatabase;
@@ -27,15 +28,15 @@ public class InfoLocalDataSource {
         return projectDatabase.infoDao().getInfoEntity();
     }
 
-    public String getAnnualClosureOldYear(){
+    public Single<String> getAnnualClosureOldYear(){
         return projectDatabase.infoDao().getAnnualClosureOldYear();
     }
 
-    public String getAnnualClosureNewYear(){
+    public Single<String> getAnnualClosureNewYear(){
         return projectDatabase.infoDao().getAnnualClosureNewYear();
     }
 
-    public String getExceptionalOpening(){
+    public Single<String> getExceptionalOpening(){
         return projectDatabase.infoDao().getExceptionalOpening();
     }
 }
