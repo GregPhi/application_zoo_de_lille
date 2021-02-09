@@ -8,17 +8,31 @@ import android.view.ViewGroup;
 import android.widget.Toolbar;
 
 import com.example.zoodelille.R;
+import com.example.zoodelille.data.di.DepencyInjector;
+import com.example.zoodelille.view.model.QuizViewModel;
+import com.example.zoodelille.view.quiz.adapter.Action;
+import com.example.zoodelille.view.quiz.adapter.QuizListAdapter;
+import com.example.zoodelille.view.quiz.adapter.item.QuizItemViewModel;
+
+import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-public class QuizFragment extends Fragment {
+public class QuizFragment extends Fragment implements Action {
     public static final String name = "Quiz";
     public static final int icon = R.drawable.drawable_quiz;
 
     private View m_view;
     private Toolbar toolbar;
+
+    private QuizViewModel quizViewModel;
+    private QuizListAdapter quizListAdapter;
 
     public static QuizFragment newInstance(){
         return new QuizFragment();
@@ -35,6 +49,8 @@ public class QuizFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        setupRecyclerView();
+        initRecyclerView();
         toolbar = m_view.findViewById(R.id.toolbar_quizzes);
         toolbar.inflateMenu(R.menu.quizzes_filter);
         toolbar.setTitle(R.string.quizzes);
@@ -55,5 +71,28 @@ public class QuizFragment extends Fragment {
                 return false;
             }
         });
+    }
+
+    public void setupRecyclerView(){
+        RecyclerView recyclerView = m_view.findViewById(R.id.recyclerview_quizzes);
+        quizListAdapter = new QuizListAdapter(this);
+        recyclerView.setAdapter(quizListAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+    }
+
+    public void initRecyclerView(){
+        quizViewModel = new ViewModelProvider(requireActivity(), DepencyInjector.getViewModelFactoryQuiz()).get(QuizViewModel.class);
+        quizViewModel.getQuizzes().observe(getViewLifecycleOwner(), new Observer<List<QuizItemViewModel>>() {
+            @Override
+            public void onChanged(List<QuizItemViewModel> quizItemViewModels) {
+                quizListAdapter.setQuizzes(quizItemViewModels);
+            }
+        });
+    }
+
+    @Override
+    public void playAQuiz(QuizItemViewModel quizItemViewModel) {
+
     }
 }
