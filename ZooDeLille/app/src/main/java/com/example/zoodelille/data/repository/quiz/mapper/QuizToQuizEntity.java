@@ -27,14 +27,30 @@ public class QuizToQuizEntity {
         return quizEntities;
     }
 
-    public List<QuestionEntity> mapQuestion(Quiz quiz){
+    public static List<QuestionEntity> mapQuestion(Quiz quiz){
         return QuestionToQuestionEntity.map(quiz.getQuestions(),quiz.getId());
     }
 
-    public List<AnswerEntity> mapAnswer(Quiz quiz){
+    public List<QuestionEntity> mapQuestion(List<Quiz> quizzes){
+        List<QuestionEntity> questionEntities = new ArrayList<>();
+        for(Quiz quiz : quizzes){
+            questionEntities.addAll(mapQuestion(quiz));
+        }
+        return questionEntities;
+    }
+
+    public static List<AnswerEntity> mapAnswer(Quiz quiz){
         List<AnswerEntity> answerEntities = new ArrayList<>();
         for(Question question : quiz.getQuestions()){
             answerEntities.addAll(QuestionToQuestionEntity.mapAnswer(question,question.getId()));
+        }
+        return answerEntities;
+    }
+
+    public List<AnswerEntity> mapAnswer(List<Quiz> quizzes){
+        List<AnswerEntity> answerEntities = new ArrayList<>();
+        for(Quiz quiz : quizzes){
+            answerEntities.addAll(mapAnswer(quiz));
         }
         return answerEntities;
     }
