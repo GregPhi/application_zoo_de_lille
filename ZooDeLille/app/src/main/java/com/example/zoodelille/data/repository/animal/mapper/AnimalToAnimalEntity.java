@@ -2,7 +2,6 @@ package com.example.zoodelille.data.repository.animal.mapper;
 
 import com.example.zoodelille.data.api.object.animal.Animal;
 import com.example.zoodelille.data.entity.animal.AnimalEntity;
-import com.example.zoodelille.data.entity.quiz.QuizEntity;
 import com.example.zoodelille.data.repository.quiz.mapper.QuizToQuizEntity;
 import com.example.zoodelille.data.repository.zooposition.mapper.ZooPositionToZooPositionEntity;
 
@@ -19,8 +18,8 @@ public class AnimalToAnimalEntity {
         animalEntity.setName(animal.getName());
 
         animalEntity.setZooPositionEntity(ZooPositionToZooPositionEntity.map(animal.getZooPosition()));
-        QuizEntity quizEntity = quizToQuizEntity.map(animal.getQuiz());
-        animalEntity.setQuiz(quizEntity);
+        //QuizEntity quizEntity = quizToQuizEntity.map(animal.getQuiz());
+        //animalEntity.setQuiz(quizEntity);
 
         animalEntity.setSituation_geo_picture_url(animal.getSituation_geo_picture_url());
         animalEntity.setMp3_url(animal.getMp3_url());
