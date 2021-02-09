@@ -41,6 +41,12 @@ public class QuizListAdapter extends RecyclerView.Adapter<QuizListAdapter.QuizLi
         return quizzes.size();
     }
 
+    public void setQuizzes(List<QuizItemViewModel> quizItemViewModels) {
+        this.quizzes.clear();
+        this.quizzes.addAll(quizItemViewModels);
+        notifyDataSetChanged();
+    }
+
     public class QuizListViewHolder extends RecyclerView.ViewHolder{
         private final View view;
         private final TextView quizzes_name;
@@ -71,7 +77,7 @@ public class QuizListAdapter extends RecyclerView.Adapter<QuizListAdapter.QuizLi
             this.quizItemViewModel = item;
             quizzes_name.setText(quizItemViewModel.getName());
             //quizzes_level.setText(quizItemViewModel.getName());
-            quizzes_best_score.setText(quizItemViewModel.getBest_score());
+            //quizzes_best_score.setText(quizItemViewModel.getBest_score());
             setupButton();
         }
     }
