@@ -29,6 +29,6 @@ public interface QuizDao {
     @Query("SELECT * FROM quizEntity")
     Flowable<List<QuizEntity>> getAllQuiz();
 
-    @Query("SELECT * FROM quizEntity WHERE make = 1")
+    @Query("SELECT quiz_id FROM quizEntity WHERE make = 1")
     Flowable<List<Integer>> getAllMakeQuiz();
 }
