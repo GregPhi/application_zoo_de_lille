@@ -4,8 +4,6 @@ import android.text.TextUtils;
 
 import com.example.zoodelille.data.api.object.info.access.Access;
 import com.example.zoodelille.data.entity.info.access.AccessEntity;
-import com.example.zoodelille.data.repository.zooposition.mapper.ZooPositionToZooPositionEntity;
-
 public class AccessToAccessEntity {
     public static AccessEntity map(Access access){
         AccessEntity accessEntity = new AccessEntity();
@@ -34,8 +32,6 @@ public class AccessToAccessEntity {
         }else{
             accessEntity.setAccess_vlille(TextUtils.join("\n",access.getAccess_vlille()));
         }
-
-        accessEntity.setZooPositionEntity(ZooPositionToZooPositionEntity.map(access.getZooPosition()));
         return accessEntity;
     }
 }
