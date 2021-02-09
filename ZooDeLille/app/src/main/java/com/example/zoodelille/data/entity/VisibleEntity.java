@@ -1,10 +1,8 @@
 package com.example.zoodelille.data.entity;
 
 import androidx.annotation.NonNull;
-import androidx.room.Embedded;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-import androidx.room.RoomWarnings;
 
 @Entity
 public class VisibleEntity {
@@ -12,26 +10,10 @@ public class VisibleEntity {
     @PrimaryKey
     private int id;
     private String name;
-    @SuppressWarnings(RoomWarnings.PRIMARY_KEY_FROM_EMBEDDED_IS_DROPPED)
-    @Embedded
-    private ZooPositionEntity zooPositionEntity;
+    private float longitude;
+    private float latitude;
 
     public VisibleEntity() {
-    }
-
-    public VisibleEntity(String name) {
-        this.name = name;
-    }
-
-    public VisibleEntity(String name, ZooPositionEntity zooPositionEntity) {
-        this.name = name;
-        this.zooPositionEntity = zooPositionEntity;
-    }
-
-    public VisibleEntity(int id, String name, ZooPositionEntity zooPositionEntity) {
-        this.id = id;
-        this.name = name;
-        this.zooPositionEntity = zooPositionEntity;
     }
 
     public int getId() {
@@ -50,11 +32,19 @@ public class VisibleEntity {
         this.name = name;
     }
 
-    public ZooPositionEntity getZooPositionEntity() {
-        return zooPositionEntity;
+    public float getLongitude() {
+        return longitude;
     }
 
-    public void setZooPositionEntity(ZooPositionEntity zooPositionEntity) {
-        this.zooPositionEntity = zooPositionEntity;
+    public void setLongitude(float longitude) {
+        this.longitude = longitude;
+    }
+
+    public float getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(float latitude) {
+        this.latitude = latitude;
     }
 }

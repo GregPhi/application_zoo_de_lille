@@ -1,9 +1,6 @@
 package com.example.zoodelille.data.entity.info.access;
 
 
-import com.example.zoodelille.data.entity.ZooPositionEntity;
-
-import androidx.room.Embedded;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 import androidx.room.RoomWarnings;
@@ -18,8 +15,6 @@ public class AccessEntity {
     private String access_metro;
     private String access_vlille;
     @SuppressWarnings(RoomWarnings.PRIMARY_KEY_FROM_EMBEDDED_IS_DROPPED)
-    @Embedded
-    private ZooPositionEntity zooPositionEntity;
 
     public AccessEntity() {
     }
@@ -70,13 +65,5 @@ public class AccessEntity {
 
     public void setAccess_vlille(String access_vlille) {
         this.access_vlille = access_vlille;
-    }
-
-    public ZooPositionEntity getZooPositionEntity() {
-        return zooPositionEntity;
-    }
-
-    public void setZooPositionEntity(ZooPositionEntity zooPositionEntity) {
-        this.zooPositionEntity = zooPositionEntity;
     }
 }
