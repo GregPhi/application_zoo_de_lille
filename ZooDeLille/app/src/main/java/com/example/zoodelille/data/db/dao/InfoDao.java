@@ -10,6 +10,7 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import io.reactivex.Completable;
 import io.reactivex.Flowable;
+import io.reactivex.Single;
 
 @Dao
 public interface InfoDao {
@@ -23,11 +24,11 @@ public interface InfoDao {
     Flowable<List<InfoEntity>> getInfoEntity();
 
     @Query("SELECT annual_closure_oldYear FROM infoentity")
-    String getAnnualClosureOldYear();
+    Single<String> getAnnualClosureOldYear();
 
     @Query("SELECT annual_closure_newYear FROM infoentity")
-    String getAnnualClosureNewYear();
+    Single<String> getAnnualClosureNewYear();
 
     @Query("SELECT exceptional_opening FROM infoentity")
-    String getExceptionalOpening();
+    Single<String> getExceptionalOpening();
 }
