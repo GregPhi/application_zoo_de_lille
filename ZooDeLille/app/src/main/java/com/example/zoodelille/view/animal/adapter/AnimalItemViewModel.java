@@ -3,13 +3,13 @@ package com.example.zoodelille.view.animal.adapter;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.example.zoodelille.data.entity.ZooPositionEntity;
 import com.example.zoodelille.data.entity.quiz.QuizEntity;
 
 public class AnimalItemViewModel implements Parcelable {
     private int id;
     private String name;
-    private ZooPositionEntity zooPosition;
+    private float longitude;
+    private float latitude;
     private String situation_geo_picture_url;
     private String mp3_url;
     private String latin_name;
@@ -27,6 +27,8 @@ public class AnimalItemViewModel implements Parcelable {
     protected AnimalItemViewModel(Parcel in) {
         id = in.readInt();
         name = in.readString();
+        longitude = in.readFloat();
+        latitude = in.readFloat();
         situation_geo_picture_url = in.readString();
         mp3_url = in.readString();
         latin_name = in.readString();
@@ -58,8 +60,12 @@ public class AnimalItemViewModel implements Parcelable {
         this.name = name;
     }
 
-    public void setZooPosition(ZooPositionEntity zooPosition) {
-        this.zooPosition = zooPosition;
+    public void setLongitude(float longitude) {
+        this.longitude = longitude;
+    }
+
+    public void setLatitude(float latitude) {
+        this.latitude = latitude;
     }
 
     public void setSituation_geo_picture_url(String situation_geo_picture_url) {
@@ -110,8 +116,12 @@ public class AnimalItemViewModel implements Parcelable {
         return name;
     }
 
-    public ZooPositionEntity getZooPosition() {
-        return zooPosition;
+    public float getLongitude() {
+        return longitude;
+    }
+
+    public float getLatitude() {
+        return latitude;
     }
 
     public String getSituation_geo_picture_url() {
@@ -171,6 +181,8 @@ public class AnimalItemViewModel implements Parcelable {
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeInt(id);
         parcel.writeString(name);
+        parcel.writeFloat(longitude);
+        parcel.writeFloat(latitude);
         parcel.writeString(situation_geo_picture_url);
         parcel.writeString(mp3_url);
         parcel.writeString(latin_name);

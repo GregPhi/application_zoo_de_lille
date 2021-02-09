@@ -11,7 +11,8 @@ public class AnimalToAnimalItemViewModel {
         AnimalItemViewModel animalItemViewModel = new AnimalItemViewModel();
         animalItemViewModel.setId(animal.getId());
         animalItemViewModel.setName(animal.getName());
-        animalItemViewModel.setZooPosition(animal.getZooPositionEntity());
+        animalItemViewModel.setLongitude(animal.getLongitude());
+        animalItemViewModel.setLatitude(animal.getLatitude());
         animalItemViewModel.setSituation_geo_picture_url(animal.getSituation_geo_picture_url());
         animalItemViewModel.setMp3_url(animal.getMp3_url());
         animalItemViewModel.setLatin_name(animal.getLatin_name());
@@ -36,7 +37,8 @@ public class AnimalToAnimalItemViewModel {
         AnimalEntity animalEntity = new AnimalEntity();
         animalEntity.setId(animalItemViewModel.getId());
         animalEntity.setName(animalItemViewModel.getName());
-        animalEntity.setZooPositionEntity(animalItemViewModel.getZooPosition());
+        animalEntity.setLongitude(animalItemViewModel.getLongitude());
+        animalEntity.setLatitude(animalItemViewModel.getLatitude());
         animalEntity.setSituation_geo_picture_url(animalItemViewModel.getSituation_geo_picture_url());
         animalEntity.setMp3_url(animalItemViewModel.getMp3_url());
         animalEntity.setLatin_name(animalItemViewModel.getLatin_name());
