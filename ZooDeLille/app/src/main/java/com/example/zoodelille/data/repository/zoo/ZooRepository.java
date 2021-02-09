@@ -78,7 +78,7 @@ public class ZooRepository {
                                 .flatMapCompletable(new Function<Boolean, Completable>() {
                                     @Override
                                     public Completable apply(Boolean versionApiAndLocalAreEquals) {
-                                        /*if(!versionApiAndLocalAreEquals){
+                                        if(!versionApiAndLocalAreEquals){
                                             Single<List<AnimalEntity>> animal = animalRemoteDataSource.getAllAnimalsEntities()
                                                     .zipWith(animalLocalDataSource.getAllFavoriteAnimalId(), new BiFunction<List<AnimalEntity>, List<Integer>, List<AnimalEntity>>() {
                                                         @Override
@@ -95,18 +95,8 @@ public class ZooRepository {
                                             final List<QuestionEntity> questionEntities = new ArrayList<>();
                                             final List<AnswerEntity> answerEntities = new ArrayList<>();
                                             final List<QuizEntity> quizEntities = new ArrayList<>();
-                                            Single<List<QuizEntity>> quizzes = quizRemoteDataSource.getAllQuizzes()
-                                                    .map(new Function<List<Quiz>, List<QuizEntity>>() {
-                                                        @Override
-                                                        public List<QuizEntity> apply(List<Quiz> quizzes) throws Exception {
-                                                            QuizToQuizEntity quizToQuizEntity = new QuizToQuizEntity();
-                                                            questionEntities.addAll(quizToQuizEntity.mapQuestion(quizzes));
-                                                            answerEntities.addAll(quizToQuizEntity.mapAnswer(quizzes));
-                                                            return quizToQuizEntity.map(quizzes);
-                                                        }
-                                                    });
                                             Single<List<Quiz>> quiz = quizRemoteDataSource.getAllQuizzes();
-                                            Single<QuizVersion> quizVersionSingle = quiz.map(new Function<List<Quiz>, QuizVersion>() {
+                                            final Single<QuizVersion> quizVersionSingle = quiz.map(new Function<List<Quiz>, QuizVersion>() {
                                                 @Override
                                                 public QuizVersion apply(List<Quiz> quizzes) throws Exception {
                                                     QuizToQuizEntity quizToQuizEntity = new QuizToQuizEntity();
@@ -116,11 +106,11 @@ public class ZooRepository {
                                                     return new QuizVersion(quizEntities,questionEntities,answerEntities);
                                                 }
                                             });
-                                            return Single.zip(animal, info, quizVersionSingle,
-                                                    new Function3<List<AnimalEntity>, InfoEntity, QuizVersion, Object>() {
+                                            return Single.zip(animal, info,
+                                                    new BiFunction<List<AnimalEntity>, InfoEntity, ZooVersion>() {
                                                         @Override
-                                                        public ZooVersion apply(List<AnimalEntity> animalEntities, InfoEntity infoEntity, QuizVersion quizVersion) throws Exception {
-                                                            return new ZooVersion(animalEntities,infoEntity,quizVersion);
+                                                        public ZooVersion apply(List<AnimalEntity> animalEntities, InfoEntity infoEntity) throws Exception {
+                                                            return new ZooVersion(animalEntities,infoEntity);
                                                         }
                                                     })
                                                     .flatMapCompletable(new Function<ZooVersion, CompletableSource>() {
@@ -128,38 +118,14 @@ public class ZooRepository {
                                                         public CompletableSource apply(ZooVersion zooVersion) throws Exception {
                                                             return animalLocalDataSource.addAllAnimals(zooVersion.animalEntities)
                                                                     .andThen(infoLocalDataSource.addInfo(zooVersion.infoEntity))
-                                                                    .andThen(quizLocalDataSource.addAllQuiz(zooVersion.quizVersion.quizEntities));
-                                                        }
-                                                    });
-                                        }*/
-                                        if(!versionApiAndLocalAreEquals){
-                                            Single<List<AnimalEntity>> animal = animalRemoteDataSource.getAllAnimalsEntities()
-                                                    .zipWith(animalLocalDataSource.getAllFavoriteAnimalId(), new BiFunction<List<AnimalEntity>, List<Integer>, List<AnimalEntity>>() {
-                                                        @Override
-                                                        public List<AnimalEntity> apply(List<AnimalEntity> animalEntities, List<Integer> ids) throws Exception {
-                                                            for(AnimalEntity animalEntity : animalEntities){
-                                                                if(ids.contains(animalEntity.getId())){
-                                                                    animalEntity.setFav();
-                                                                }
-                                                            }
-                                                            return animalEntities;
-                                                        }
-                                                    });
-                                            Single<InfoEntity> info = infoRemoteDataSource.getInfoEntity();
-                                            Single<List<QuizEntity>> quizzes = quizRemoteDataSource.getAllQuizzesEntity();
-                                            return Single.zip(animal, info, quizzes,
-                                                    new Function3<List<AnimalEntity>, InfoEntity, List<QuizEntity>, ZooVersion>() {
-                                                        @Override
-                                                        public ZooVersion apply(List<AnimalEntity> animalEntities, InfoEntity infoEntity, List<QuizEntity> quizEntities) throws Exception {
-                                                            return new ZooVersion(animalEntities,infoEntity,quizEntities);
-                                                        }
-                                                    })
-                                                    .flatMapCompletable(new Function<ZooVersion, CompletableSource>() {
-                                                        @Override
-                                                        public CompletableSource apply(ZooVersion zooVersion) throws Exception {
-                                                            return animalLocalDataSource.addAllAnimals(zooVersion.animalEntities)
-                                                                    .andThen(infoLocalDataSource.addInfo(zooVersion.infoEntity))
-                                                                    .andThen(quizLocalDataSource.addAllQuiz(zooVersion.quizEntities));
+                                                                    .andThen(quizVersionSingle.flatMapCompletable(new Function<QuizVersion, CompletableSource>() {
+                                                                        @Override
+                                                                        public CompletableSource apply(QuizVersion quizVersion) throws Exception {
+                                                                            return quizLocalDataSource.addAllQuiz(quizVersion.quizEntities)
+                                                                                    .andThen(questionLocalDataSource.addAllQuestion(quizVersion.questionEntities))
+                                                                                    .andThen(answerLocalDataSource.addAllAnswer(quizVersion.answerEntities));
+                                                                        }
+                                                                    }));
                                                         }
                                                     });
                                         }
@@ -174,23 +140,9 @@ public class ZooRepository {
     protected class ZooVersion{
         public List<AnimalEntity> animalEntities;
         public InfoEntity infoEntity;
-        public List<QuizEntity> quizEntities;
-        public ZooVersion(List<AnimalEntity> animalEntities, InfoEntity infoEntity, List<QuizEntity> quizEntities) {
+        public ZooVersion(List<AnimalEntity> animalEntities, InfoEntity infoEntity) {
             this.animalEntities = animalEntities;
             this.infoEntity = infoEntity;
-            this.quizEntities = quizEntities;
-        }
-    }
-
-    /*
-    protected class ZooVersion{
-        public List<AnimalEntity> animalEntities;
-        public InfoEntity infoEntity;
-        public QuizVersion quizVersion;
-        public ZooVersion(List<AnimalEntity> animalEntities, InfoEntity infoEntity, QuizVersion quizVersion) {
-            this.animalEntities = animalEntities;
-            this.infoEntity = infoEntity;
-            this.quizVersion = quizVersion;
         }
     }
 
@@ -204,6 +156,19 @@ public class ZooRepository {
             this.answerEntities = answerEntities;
         }
     }
-     */
+/*
+    protected class ZooVersion{
+        public List<AnimalEntity> animalEntities;
+        public InfoEntity infoEntity;
+        public QuizVersion quizVersion;
+        public ZooVersion(List<AnimalEntity> animalEntities, InfoEntity infoEntity, QuizVersion quizVersion) {
+            this.animalEntities = animalEntities;
+            this.infoEntity = infoEntity;
+            this.quizVersion = quizVersion;
+        }
+    }
+
+
+*/
 }
 
