@@ -87,7 +87,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/play_quiz"
+            android:id="@+id/play_quiz_in_animal"
             android:layout_width="wrap_content"
             android:layout_height="25dp"
             android:layout_marginStart="39dp"

@@ -1,30 +1,31 @@
 package com.example.zoodelille.data.entity.quiz.question;
 
+import com.example.zoodelille.data.entity.quiz.QuizEntity;
+
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
 
-@Entity
+@Entity(foreignKeys = @ForeignKey(entity = QuizEntity.class,parentColumns = "quiz_id",childColumns = "quiz_id"))
 public class QuestionEntity {
     @NonNull
     @PrimaryKey
-    private int id;
+    private int question_id;
     private String question;
     private String url_extra;
     private int quiz_id;
     private boolean right_answer;
 
-    public QuestionEntity() {
-        this.right_answer = false;
+    public QuestionEntity() {}
+
+    public int getQuestion_id() {
+        return question_id;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public void setQuestion_id(int id) {
+        this.question_id = id;
     }
 
     public String getQuestion() {
