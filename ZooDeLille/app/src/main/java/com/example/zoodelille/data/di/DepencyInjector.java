@@ -90,7 +90,7 @@ public class DepencyInjector {
 
     public static ZooRepository getZooRepository(){
         if(zooRepository == null){
-            zooRepository = new ZooRepository(new ZooLocalDataSource(getProjectDatabase()), new ZooRemoteDataSource(getZooService()), new AnimalLocalDataSource(getProjectDatabase()), new AnimalRemoteDataSource(getZooService()), new InfoLocalDataSource(getProjectDatabase()), new InfoRemoteDataSource(getZooService()));
+            zooRepository = new ZooRepository(new ZooLocalDataSource(getProjectDatabase()), new ZooRemoteDataSource(getZooService()), new AnimalLocalDataSource(getProjectDatabase()), new AnimalRemoteDataSource(getZooService()), new InfoLocalDataSource(getProjectDatabase()), new InfoRemoteDataSource(getZooService()),new QuizLocalDataSource(getProjectDatabase()), new QuestionLocalDataSource(getProjectDatabase()), new AnswerLocalDataSource(getProjectDatabase()), new QuizRemoteDataSource(getZooService()));
         }
         return zooRepository;
     }
