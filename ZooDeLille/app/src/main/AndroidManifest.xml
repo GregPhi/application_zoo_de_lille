@@ -41,6 +41,9 @@
             android:name=".view.animal.info.AnimalInfoActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name=".view.quiz.fragment.makequiz.MakeAQuizActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".view.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
