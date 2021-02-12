@@ -68,7 +68,8 @@ public class QuizListAdapter extends RecyclerView.Adapter<QuizListAdapter.QuizLi
             this.play_quiz.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    action.playAQuiz(quizItemViewModel);
+                    action.playAQuiz(quizItemViewModel.getId());
+                    System.out.println("PLAY - "+quizItemViewModel.getId());
                 }
             });
         }
@@ -76,8 +77,8 @@ public class QuizListAdapter extends RecyclerView.Adapter<QuizListAdapter.QuizLi
         public void setupViewHolder(QuizItemViewModel item){
             this.quizItemViewModel = item;
             quizzes_name.setText(quizItemViewModel.getName());
-            //quizzes_level.setText(quizItemViewModel.getName());
-            //quizzes_best_score.setText(quizItemViewModel.getBest_score());
+            quizzes_level.setText(quizItemViewModel.getName());
+            quizzes_best_score.setText(String.valueOf(quizItemViewModel.getBest_score()));
             setupButton();
         }
     }
