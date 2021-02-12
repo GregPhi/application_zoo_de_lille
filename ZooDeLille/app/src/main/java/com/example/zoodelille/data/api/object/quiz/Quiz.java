@@ -49,14 +49,4 @@ public class Quiz {
     public void setMake(){
         this.make = true;
     }
-
-    public void addQuestion(Question question){
-        if(this.questions!=null){
-            this.questions.add(question);
-        }
-    }
-
-    public void removeQuestion(Question question){
-        this.questions.remove(question);
-    }
 }
