@@ -8,6 +8,8 @@
         android:id="@+id/quizzes_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="4dp"
         android:text="@string/quiz_name"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -17,7 +19,8 @@
         android:id="@+id/quizzes_level"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
         android:text="@string/quiz_level"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,19 +30,23 @@
         android:id="@+id/quizzes_best_score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="24dp"
         android:text="@string/quiz_best_score"
         android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/quizzes_level" />
+        app:layout_constraintTop_toBottomOf="@+id/quizzes_level"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
         android:id="@+id/play_quiz"
         android:layout_width="74dp"
         android:layout_height="66dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="40dp"
+        android:contentDescription="@string/quizzes_play"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/drawable_play"
-        android:contentDescription="@string/quizzes_play"/>
+        app:srcCompat="@drawable/drawable_play" />
 </androidx.constraintlayout.widget.ConstraintLayout>
