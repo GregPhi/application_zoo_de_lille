@@ -28,7 +28,7 @@ public class QuizLocalDataSource {
         return projectDatabase.quizDao().deleteQuizWithId(id);
     }
 
-    public Single<QuizEntity> getQuizEntity(int id){
+    public Flowable<QuizEntity> getQuizEntity(int id){
         return projectDatabase.quizDao().getQuizEntity(id);
     }
 
@@ -36,7 +36,7 @@ public class QuizLocalDataSource {
         return projectDatabase.quizDao().getAllQuiz();
     }
 
-    public Flowable<List<Integer>> getAllMakeQuiz(){
+    public Single<List<Integer>> getAllMakeQuiz(){
         return projectDatabase.quizDao().getAllMakeQuiz();
     }
 }
