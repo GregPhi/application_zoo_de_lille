@@ -1,5 +1,6 @@
 package com.example.zoodelille.view.quiz.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -13,6 +14,7 @@ import com.example.zoodelille.view.model.QuizViewModel;
 import com.example.zoodelille.view.quiz.adapter.Action;
 import com.example.zoodelille.view.quiz.adapter.QuizListAdapter;
 import com.example.zoodelille.view.quiz.adapter.item.QuizItemViewModel;
+import com.example.zoodelille.view.quiz.fragment.makequiz.MakeAQuizActivity;
 
 import java.util.List;
 
@@ -92,7 +94,14 @@ public class QuizFragment extends Fragment implements Action {
     }
 
     @Override
-    public void playAQuiz(QuizItemViewModel quizItemViewModel) {
-
+    public void playAQuiz(final int id) {
+        quizViewModel.getQuiz(id).observe(getViewLifecycleOwner(), new Observer<QuizItemViewModel>() {
+            @Override
+            public void onChanged(QuizItemViewModel quizItemViewModel) {
+                Intent intent = new Intent(getActivity(), MakeAQuizActivity.class);
+                intent.putExtra("quiz",quizItemViewModel);
+                startActivity(intent);
+            }
+        });
     }
 }
