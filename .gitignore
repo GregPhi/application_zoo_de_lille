@@ -6,6 +6,7 @@
 Local.java
 /ZooDeLille/app/src/main/res/xml/*.xml
 /ZooDeLille/app/src/debug/res/values/google_maps_api.xml
+/ZooDeLille/app/src/release/res/values/google_maps_api.xml
 
 ### Android ###
 # Built application files
