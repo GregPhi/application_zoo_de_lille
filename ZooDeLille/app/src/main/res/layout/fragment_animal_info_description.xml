@@ -22,7 +22,13 @@
         android:layout_height="wrap_content"
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         android:layout_marginTop="23dp"
+=======
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+>>>>>>> Stashed changes
 =======
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
@@ -44,7 +50,13 @@
         android:layout_height="wrap_content"
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         android:layout_marginTop="55dp"
+=======
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+>>>>>>> Stashed changes
 =======
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
@@ -66,7 +78,13 @@
         android:layout_height="wrap_content"
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         android:layout_marginTop="68dp"
+=======
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+>>>>>>> Stashed changes
 =======
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"

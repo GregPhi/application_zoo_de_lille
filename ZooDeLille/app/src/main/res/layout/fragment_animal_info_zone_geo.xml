@@ -17,9 +17,12 @@
         app:layout_constraintTop_toTopOf="parent"
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         app:srcCompat="@drawable/drawable_animals"
         android:contentDescription="@string/zone_geo" />
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
         app:srcCompat="@drawable/drawable_animals" />
