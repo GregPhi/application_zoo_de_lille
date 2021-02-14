@@ -33,6 +33,7 @@ public class QuizViewModel extends ViewModel {
     }
 
     public MutableLiveData<List<QuizItemViewModel>> getQuizzes() {
+        isLoad.postValue(true);
         compositeDisposable.clear();
         compositeDisposable.add(quizRepository.getAllQuiz()
                 .subscribeOn(Schedulers.io())
