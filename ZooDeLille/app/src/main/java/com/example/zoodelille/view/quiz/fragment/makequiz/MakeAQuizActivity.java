@@ -25,6 +25,7 @@ import androidx.lifecycle.ViewModelProvider;
 public class MakeAQuizActivity extends AppCompatActivity {
     private QuizViewModel quizViewModel;
     private QuizItemViewModel quizItemViewModel;
+    private static int TAG_QUIZ_ID = -1;
 
     private TextView question;
     private ImageView url_extra;
@@ -49,13 +50,20 @@ public class MakeAQuizActivity extends AppCompatActivity {
         answer4 = findViewById(R.id.answer4);
 
         Intent intent = getIntent();
-        quizItemViewModel = intent.getParcelableExtra("quiz");
+        TAG_QUIZ_ID = intent.getIntExtra("id",-1);
 
-        if(quizViewModel == null){
-            quizViewModel = new ViewModelProvider(this, DepencyInjector.getViewModelFactoryQuiz()).get(QuizViewModel.class);
+        if(TAG_QUIZ_ID==-1){
+            finish();
         }
 
-        showQuestion();
+        quizViewModel = new ViewModelProvider(this, DepencyInjector.getViewModelFactoryQuiz()).get(QuizViewModel.class);
+        quizViewModel.getQuiz(TAG_QUIZ_ID).observeForever(new Observer<QuizItemViewModel>() {
+            @Override
+            public void onChanged(QuizItemViewModel item) {
+                quizItemViewModel = item;
+                showQuestion();
+            }
+        });
     }
 
     public void showQuestion(){
