@@ -14,9 +14,11 @@ public class AnimalToAnimalItemViewModel {
         animalItemViewModel.setLongitude(animal.getLongitude());
         animalItemViewModel.setLatitude(animal.getLatitude());
         animalItemViewModel.setSituation_geo_picture_url(animal.getSituation_geo_picture_url());
+        animalItemViewModel.setSituation_geo_picture_description(animal.getSituation_geo_picture_description());
         animalItemViewModel.setMp3_url(animal.getMp3_url());
         animalItemViewModel.setLatin_name(animal.getLatin_name());
         animalItemViewModel.setDescription(animal.getDescription());
+        animalItemViewModel.setDo_you_know(animal.getDo_you_know());
         animalItemViewModel.setClassification(animal.getClassification());
         animalItemViewModel.setMenaced(animal.getMenaced());
         animalItemViewModel.setFavorite(animal.isFavorite());
@@ -40,6 +42,7 @@ public class AnimalToAnimalItemViewModel {
         animalEntity.setLongitude(animalItemViewModel.getLongitude());
         animalEntity.setLatitude(animalItemViewModel.getLatitude());
         animalEntity.setSituation_geo_picture_url(animalItemViewModel.getSituation_geo_picture_url());
+        animalEntity.setSituation_geo_picture_description(animalItemViewModel.getSituation_geo_picture_description());
         animalEntity.setMp3_url(animalItemViewModel.getMp3_url());
         animalEntity.setLatin_name(animalItemViewModel.getLatin_name());
         animalEntity.setDescription(animalItemViewModel.getDescription());

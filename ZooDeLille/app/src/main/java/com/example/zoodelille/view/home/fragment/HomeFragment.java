@@ -24,7 +24,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 public class HomeFragment extends Fragment {
-    public static final String name = "Home";
+    public static final String name = "Accueil";
     public static final int icon = R.drawable.drawable_home;
 
     private View m_view;
@@ -56,18 +56,19 @@ public class HomeFragment extends Fragment {
     public void setWelcome_to_zoo_date(){
         SimpleDateFormat formater;
         Date aujourdhui = new Date();
-        formater = new SimpleDateFormat("'le' dd MMMM yyyy 'à' hh:mm:ss");
+        formater = new SimpleDateFormat("'Le' dd MMMM yyyy 'à' HH:mm:ss");
         welcome_to_zoo_date.setText(formater.format(aujourdhui));
         InfoViewModel infoViewModel = new ViewModelProvider(this, DepencyInjector.getViewModelFactoryInfo()).get(InfoViewModel.class);
         infoViewModel.zooIsOpen().observe(getViewLifecycleOwner(),new Observer<Boolean>() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onChanged(Boolean aBoolean) {
                 TextView open_or_not = m_view.findViewById(R.id.open_or_not);
                 if(aBoolean){
-                    open_or_not.setText("OUVERT");
+                    open_or_not.setText("Le zoo est actuellement ouvert.");
                     open_or_not.setBackgroundColor(getResources().getColor(R.color.LightGreen));
                 }else{
-                    open_or_not.setText("FERME");
+                    open_or_not.setText("Le zoo est actuellement fermé.");
                     open_or_not.setBackgroundColor(getResources().getColor(R.color.design_default_color_error));
                 }
             }

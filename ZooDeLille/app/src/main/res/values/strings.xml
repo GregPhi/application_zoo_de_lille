@@ -22,7 +22,7 @@
     <string name="prices_adultes_payant">Entrée adulte au prix de 4 euros (tarif de 2020)</string>
     <string name="prices_enfants_payant">Entrée enfant entre 5 à 17 ans inclus à 2 euros (tarif de 2020).</string>
     <string name="prices_enfants_gratuit">Entrée gratuite pour les habitants de Lille.</string>
-    <string name="more_info">Plus d\'informations</string>
+    <string name="more_info">Voir les informations du zoo</string>
     <string name="wallpaper_home">Random animal picture</string>
 
     <!-- CARD VIEW ROUTE -->
@@ -47,7 +47,7 @@
     <string name="pause">Pause</string>
     <string name="button_to_play">Button to play</string>
     <!-- FRAGMENT ANIMALS -->
-    <string name="animals">Animaux</string>
+    <string name="animals">Les animaux du zoo</string>
     <!-- FRAGMENT QUIZZES -->
     <string name="quizzes">Quiz</string>
 
@@ -56,7 +56,7 @@
     <string name="text_filter_alpha">A - Z</string>
     <string name="text_filter_make">Fait ?</string>
     <string name="text_filter_level">Niveau</string>
-    <string name="text_filter_favori">Favori</string>
+    <string name="text_filter_favori">Afficher vos favoris</string>
     <string name="text_filter_alim">Régime alimentaire</string>
     <string name="text_filter_distance">Distance</string>
     <string name="text_filter_time">Durée estimée</string>
@@ -83,4 +83,8 @@
     <string name="facebook">Facebook</string>
     <string name="actu_work">Actualité en préparation</string>
     <string name="a_z">A-Z</string>
+    <string name="gradiant">gradiant</string>
+    <string name="display_shape">Display shape</string>
+    <string name="wait_pict_screen">Waiting picture\'s screen</string>
+    <string name="nos_soigneurs_s_occupent_de_vous">Nos soigneurs s\'occupent de vous</string>
 </resources>

@@ -5,7 +5,6 @@ import com.example.zoodelille.view.home.fragment.HomeFragment;
 import com.example.zoodelille.view.map.fragment.MapFragment;
 import com.example.zoodelille.view.qrcode.fragment.QRCodeFragment;
 import com.example.zoodelille.view.quiz.fragment.QuizFragment;
-import com.example.zoodelille.view.route.fragment.RouteFragment;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -20,7 +19,7 @@ public class ViewPagerAdapterApplication extends FragmentStateAdapter {
     public ViewPagerAdapterApplication(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
         super(fragmentManager, lifecycle);
     }
-
+/*
     @NotNull
     @Override
     public Fragment createFragment(int position) {
@@ -45,5 +44,28 @@ public class ViewPagerAdapterApplication extends FragmentStateAdapter {
     @Override
     public int getItemCount() {
         return 6;
+    }
+*/
+    @NotNull
+    @Override
+    public Fragment createFragment(int position) {
+        if(position == 1){
+            return AnimalFragment.newInstance();
+        }
+        if(position == 2){
+            return MapFragment.newInstance();
+        }
+        if(position == 3){
+            return QuizFragment.newInstance();
+        }
+        if(position == 4){
+            return QRCodeFragment.newInstance();
+        }
+        return HomeFragment.newInstance();
+    }
+
+    @Override
+    public int getItemCount() {
+        return 5;
     }
 }

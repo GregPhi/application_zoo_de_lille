@@ -20,6 +20,7 @@ public class AnimalToAnimalEntity {
         animalEntity.setLatitude(animal.getZooPosition().getLatitude());
 
         animalEntity.setSituation_geo_picture_url(animal.getSituation_geo_picture_url());
+        animalEntity.setSituation_geo_picture_description(animal.getSituation_geo_picture_description());
         animalEntity.setMp3_url(animal.getMp3_url());
         animalEntity.setLatin_name(animal.getLatin_name());
         animalEntity.setDo_you_know(animal.getDo_you_know());
