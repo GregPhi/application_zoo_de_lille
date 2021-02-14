@@ -14,7 +14,7 @@ public class QuestionToQuestionEntity {
         questionEntity.setQuestion_id(question.getId());
         questionEntity.setQuestion(question.getQuestion());
         questionEntity.setUrl_extra(question.getUrl_extra());
-        questionEntity.setQuiz_id(quiz_id);
+        questionEntity.setQuizid(quiz_id);
         return questionEntity;
     }
 

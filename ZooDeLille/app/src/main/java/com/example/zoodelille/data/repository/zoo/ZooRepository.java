@@ -27,7 +27,6 @@ import io.reactivex.CompletableSource;
 import io.reactivex.Single;
 import io.reactivex.functions.BiFunction;
 import io.reactivex.functions.Function;
-import io.reactivex.functions.Function3;
 
 public class ZooRepository {
     private final ZooLocalDataSource zooLocalDataSource;
@@ -95,7 +94,18 @@ public class ZooRepository {
                                             final List<QuestionEntity> questionEntities = new ArrayList<>();
                                             final List<AnswerEntity> answerEntities = new ArrayList<>();
                                             final List<QuizEntity> quizEntities = new ArrayList<>();
-                                            Single<List<Quiz>> quiz = quizRemoteDataSource.getAllQuizzes();
+                                            Single<List<Quiz>> quiz = quizRemoteDataSource.getAllQuizzes()
+                                                    .zipWith(quizLocalDataSource.getAllMakeQuiz(), new BiFunction<List<Quiz>, List<Integer>, List<Quiz>>() {
+                                                        @Override
+                                                        public List<Quiz> apply(List<Quiz> quizzes, List<Integer> ids) throws Exception {
+                                                            for(Quiz q : quizzes){
+                                                                if(ids.contains(q.getId())){
+                                                                    q.setMake();
+                                                                }
+                                                            }
+                                                            return quizzes;
+                                                        }
+                                                    });
                                             final Single<QuizVersion> quizVersionSingle = quiz.map(new Function<List<Quiz>, QuizVersion>() {
                                                 @Override
                                                 public QuizVersion apply(List<Quiz> quizzes) throws Exception {
@@ -156,19 +166,5 @@ public class ZooRepository {
             this.answerEntities = answerEntities;
         }
     }
-/*
-    protected class ZooVersion{
-        public List<AnimalEntity> animalEntities;
-        public InfoEntity infoEntity;
-        public QuizVersion quizVersion;
-        public ZooVersion(List<AnimalEntity> animalEntities, InfoEntity infoEntity, QuizVersion quizVersion) {
-            this.animalEntities = animalEntities;
-            this.infoEntity = infoEntity;
-            this.quizVersion = quizVersion;
-        }
-    }
-
-
-*/
 }
 

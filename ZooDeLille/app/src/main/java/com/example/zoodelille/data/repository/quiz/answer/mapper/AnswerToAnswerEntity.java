@@ -12,7 +12,7 @@ public class AnswerToAnswerEntity {
         answerEntity.setAnswer_id(answer.getId());
         answerEntity.setAnswer(answer.getAnswer());
         answerEntity.setUrl_picture(answer.getUrl_picture());
-        answerEntity.setQuestion_id(question_id);
+        answerEntity.setQuestionid(question_id);
         return answerEntity;
     }
 

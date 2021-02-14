@@ -7,14 +7,15 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-@Entity(foreignKeys = @ForeignKey(entity = QuestionEntity.class,parentColumns = "question_id",childColumns = "question_id"))
+@Entity
 public class AnswerEntity {
     @NonNull
     @PrimaryKey
     private int answer_id;
     private String answer;
     private String url_picture;
-    private int question_id;
+    @ForeignKey(entity = QuestionEntity.class,parentColumns = "question_id",childColumns = "questionid",onDelete = ForeignKey.CASCADE)
+    private int questionid;
     private boolean isGood;
 
     public AnswerEntity() {
@@ -44,12 +45,12 @@ public class AnswerEntity {
         this.url_picture = url_picture;
     }
 
-    public int getQuestion_id() {
-        return question_id;
+    public int getQuestionid() {
+        return questionid;
     }
 
-    public void setQuestion_id(int question_id) {
-        this.question_id = question_id;
+    public void setQuestionid(int questionid) {
+        this.questionid = questionid;
     }
 
     public boolean isGood() {
@@ -58,9 +59,5 @@ public class AnswerEntity {
 
     public void setGood(boolean good) {
         isGood = good;
-    }
-
-    public void isGoodTrue(){
-        isGood = true;
     }
 }

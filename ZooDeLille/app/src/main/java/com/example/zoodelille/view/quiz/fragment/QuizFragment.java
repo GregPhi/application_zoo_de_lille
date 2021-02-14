@@ -1,11 +1,10 @@
 package com.example.zoodelille.view.quiz.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toolbar;
 
 import com.example.zoodelille.R;
 import com.example.zoodelille.data.di.DepencyInjector;
@@ -13,6 +12,7 @@ import com.example.zoodelille.view.model.QuizViewModel;
 import com.example.zoodelille.view.quiz.adapter.Action;
 import com.example.zoodelille.view.quiz.adapter.QuizListAdapter;
 import com.example.zoodelille.view.quiz.adapter.item.QuizItemViewModel;
+import com.example.zoodelille.view.quiz.fragment.makequiz.MakeAQuizActivity;
 
 import java.util.List;
 
@@ -29,7 +29,6 @@ public class QuizFragment extends Fragment implements Action {
     public static final int icon = R.drawable.drawable_quiz;
 
     private View m_view;
-    private Toolbar toolbar;
 
     private QuizViewModel quizViewModel;
     private QuizListAdapter quizListAdapter;
@@ -51,26 +50,6 @@ public class QuizFragment extends Fragment implements Action {
         super.onActivityCreated(savedInstanceState);
         setupRecyclerView();
         initRecyclerView();
-        toolbar = m_view.findViewById(R.id.toolbar_quizzes);
-        toolbar.inflateMenu(R.menu.quizzes_filter);
-        toolbar.setTitle(R.string.quizzes);
-        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                if(item.getItemId()==R.id.quizzes_filter_alpha)
-                {
-                    // do something
-                }
-                else if(item.getItemId()== R.id.quizzes_filter_make)
-                {
-                    // do something
-                }
-                else{
-                    // do something
-                }
-                return false;
-            }
-        });
     }
 
     public void setupRecyclerView(){
@@ -92,7 +71,9 @@ public class QuizFragment extends Fragment implements Action {
     }
 
     @Override
-    public void playAQuiz(QuizItemViewModel quizItemViewModel) {
-
+    public void playAQuiz(final int id) {
+        Intent intent = new Intent(getActivity(), MakeAQuizActivity.class);
+        intent.putExtra("id",id);
+        startActivity(intent);
     }
 }

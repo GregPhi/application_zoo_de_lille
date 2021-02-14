@@ -24,11 +24,11 @@ public interface QuizDao {
     Completable deleteQuizWithId(int id);
 
     @Query("SELECT * FROM quizEntity WHERE quiz_id = :id")
-    Single<QuizEntity> getQuizEntity(int id);
+    Flowable<QuizEntity> getQuizEntity(int id);
 
     @Query("SELECT * FROM quizEntity")
     Flowable<List<QuizEntity>> getAllQuiz();
 
     @Query("SELECT quiz_id FROM quizEntity WHERE make = 1")
-    Flowable<List<Integer>> getAllMakeQuiz();
+    Single<List<Integer>> getAllMakeQuiz();
 }

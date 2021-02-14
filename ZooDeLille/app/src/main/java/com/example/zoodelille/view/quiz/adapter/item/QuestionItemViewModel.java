@@ -81,6 +81,13 @@ public class QuestionItemViewModel implements Parcelable {
         this.right_answer = true;
     }
 
+    public void addAnswer(AnswerItemViewModel answerItemViewModel){
+        if(this.answers == null){
+            this.answers = new ArrayList<>();
+        }
+        this.answers.add(answerItemViewModel);
+    }
+
     @Override
     public int describeContents() {
         return 0;

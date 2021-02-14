@@ -8,14 +8,15 @@ import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
 
-@Entity(foreignKeys = @ForeignKey(entity = QuizEntity.class,parentColumns = "quiz_id",childColumns = "quiz_id"))
+@Entity
 public class QuestionEntity {
     @NonNull
     @PrimaryKey
     private int question_id;
     private String question;
     private String url_extra;
-    private int quiz_id;
+    @ForeignKey(entity = QuizEntity.class,parentColumns = "quiz_id",childColumns = "quizid",onDelete = ForeignKey.CASCADE)
+    private int quizid;
     private boolean right_answer;
 
     public QuestionEntity() {}
@@ -24,8 +25,8 @@ public class QuestionEntity {
         return question_id;
     }
 
-    public void setQuestion_id(int id) {
-        this.question_id = id;
+    public void setQuestion_id(int question_id) {
+        this.question_id = question_id;
     }
 
     public String getQuestion() {
@@ -44,23 +45,19 @@ public class QuestionEntity {
         this.url_extra = url_extra;
     }
 
+    public int getQuizid() {
+        return quizid;
+    }
+
+    public void setQuizid(int quizid) {
+        this.quizid = quizid;
+    }
+
     public boolean isRight_answer() {
         return right_answer;
     }
 
-    public int getQuiz_id() {
-        return quiz_id;
-    }
-
-    public void setQuiz_id(int quiz_id) {
-        this.quiz_id = quiz_id;
-    }
-
     public void setRight_answer(boolean right_answer) {
         this.right_answer = right_answer;
-    }
-
-    public void setRight_answer(){
-        this.right_answer = true;
     }
 }

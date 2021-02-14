@@ -58,7 +58,8 @@ public class QuizItemViewModel implements Parcelable {
     }
 
     public void setQuestions(List<QuestionItemViewModel> questions) {
-        this.questions = questions;
+        this.questions.clear();
+        this.questions.addAll(questions);
     }
 
     public boolean isMake() {

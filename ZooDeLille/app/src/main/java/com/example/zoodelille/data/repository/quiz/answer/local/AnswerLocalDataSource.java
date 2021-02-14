@@ -39,4 +39,8 @@ public class AnswerLocalDataSource {
     public Flowable<List<AnswerEntity>> getAllAnswerWithQuestionId(int id){
         return projectDatabase.answerDao().getAllAnswerWithQuestionId(id);
     }
+
+    public List<AnswerEntity> getListAnswerWithQuestionId(int id){
+        return projectDatabase.answerDao().getListAnswerWithQuestionId(id);
+    }
 }
