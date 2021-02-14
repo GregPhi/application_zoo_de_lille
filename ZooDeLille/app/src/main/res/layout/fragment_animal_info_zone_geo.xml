@@ -16,9 +16,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         app:srcCompat="@drawable/drawable_animals"
         android:contentDescription="@string/zone_geo" />
 =======
+=======
+>>>>>>> Stashed changes
         app:srcCompat="@drawable/drawable_animals" />
 
     <TextView
