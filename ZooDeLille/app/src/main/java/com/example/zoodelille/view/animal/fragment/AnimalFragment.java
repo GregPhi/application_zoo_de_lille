@@ -52,36 +52,19 @@ public class AnimalFragment extends Fragment implements Action {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         setupRecyclerView();
-        initRecyclerView();
+        setupRecyclerViewWith_AZ_and_NotFavorite();
         setupSwitch();
     }
 
     public void setupSwitch(){
-        final Switch switch_az = m_view.findViewById(R.id.switch_az);
         final Switch switch_fav = m_view.findViewById(R.id.switch_fav);
-        switch_az.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(b){
-                    switch_fav.setChecked(false);
-                    setupRecyclerViewWithAlphaFilter();
-                }else{
-                    if(!switch_fav.isChecked()){
-                        initRecyclerView();
-                    }
-                }
-            }
-        });
         switch_fav.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(b){
-                    switch_az.setChecked(false);
-                    setupRecyclerViewWithLikeFilter();
+                    setupRecyclerViewWith_AZ_and_Favorite();
                 }else{
-                    if(!switch_az.isChecked()){
-                        initRecyclerView();
-                    }
+                    setupRecyclerViewWith_AZ_and_NotFavorite();
                 }
             }
         });
@@ -95,17 +78,7 @@ public class AnimalFragment extends Fragment implements Action {
 
     }
 
-    public void initRecyclerView(){
-        animalViewModel = new ViewModelProvider(requireActivity(), DepencyInjector.getViewModelFactoryAnimal()).get(AnimalViewModel.class);
-        animalViewModel.getAllAnimal().observe(getViewLifecycleOwner(), new Observer<List<AnimalItemViewModel>>() {
-            @Override
-            public void onChanged(List<AnimalItemViewModel> animalItemViewModels) {
-                animalListAdapter.setAnimals(animalItemViewModels);
-            }
-        });
-    }
-
-    public void setupRecyclerViewWithAlphaFilter(){
+    public void setupRecyclerViewWith_AZ_and_NotFavorite(){
         animalViewModel = new ViewModelProvider(requireActivity(), DepencyInjector.getViewModelFactoryAnimal()).get(AnimalViewModel.class);
         animalViewModel.getAllAnimalOnAZ_or_ZA(true).observe(getViewLifecycleOwner(), new Observer<List<AnimalItemViewModel>>() {
             @Override
@@ -115,9 +88,9 @@ public class AnimalFragment extends Fragment implements Action {
         });
     }
 
-    public void setupRecyclerViewWithLikeFilter(){
+    public void setupRecyclerViewWith_AZ_and_Favorite(){
         animalViewModel = new ViewModelProvider(requireActivity(), DepencyInjector.getViewModelFactoryAnimal()).get(AnimalViewModel.class);
-        animalViewModel.getAllAnimalIsFavorite_or_Not(true).observe(getViewLifecycleOwner(), new Observer<List<AnimalItemViewModel>>() {
+        animalViewModel.getAllAnimalOnAZ_or_ZA_WhenISFavorite_or_Not(true,true).observe(getViewLifecycleOwner(), new Observer<List<AnimalItemViewModel>>() {
             @Override
             public void onChanged(List<AnimalItemViewModel> animalItemViewModels) {
                 animalListAdapter.setAnimals(animalItemViewModels);

@@ -86,7 +86,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:tabBackground="@color/DarkGreen"
-                        app:tabIndicatorColor="#FFFFFF"
+                        app:tabTextColor="#FFFFFF"
                         app:tabSelectedTextColor="@color/LighterGreen"
                         tools:ignore="MissingConstraints" />
 
@@ -140,7 +140,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:tabBackground="@color/DarkGreen"
-                        app:tabIndicatorColor="#FFFFFF"
+                        app:tabTextColor="#FFFFFF"
                         app:tabSelectedTextColor="@color/LighterGreen"
                         tools:ignore="MissingConstraints" />
 
@@ -180,7 +180,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:tabBackground="@color/DarkGreen"
-                        app:tabIndicatorColor="#FFFFFF"
+                        app:tabTextColor="#FFFFFF"
                         app:tabSelectedTextColor="@color/LighterGreen"
                         tools:ignore="MissingConstraints" />
 
@@ -216,7 +216,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:tabBackground="@color/DarkGreen"
-                        app:tabIndicatorColor="#FFFFFF"
+                        app:tabTextColor="#FFFFFF"
                         app:tabSelectedTextColor="@color/LighterGreen"
                         tools:ignore="MissingConstraints"
                         tools:layout_editor_absoluteX="0dp"

@@ -3,9 +3,11 @@
     <words>
       <w>accueil</w>
       <w>accéder</w>
+      <w>actuellement</w>
       <w>adresse</w>
       <w>adulte</w>
       <w>adultes</w>
+      <w>afin</w>
       <w>alim</w>
       <w>alimentaire</w>
       <w>animaux</w>
@@ -14,6 +16,7 @@
       <w>bienvenue</w>
       <w>cliquez</w>
       <w>cours</w>
+      <w>différentes</w>
       <w>doivent</w>
       <w>durée</w>
       <w>délai</w>
@@ -37,8 +40,14 @@
       <w>jours</w>
       <w>lomme</w>
       <w>lundi</w>
+<<<<<<< Updated upstream
+=======
+      <w>makequiz</w>
+      <w>mieux</w>
+>>>>>>> Stashed changes
       <w>mois</w>
       <w>niveau</w>
+      <w>nécessaires</w>
       <w>ouvert</w>
       <w>parcours</w>
       <w>payant</w>
@@ -48,12 +57,15 @@
       <w>qrcode</w>
       <w>quelques</w>
       <w>régime</w>
+      <w>réussi</w>
       <w>tarif</w>
       <w>textview</w>
       <w>tous</w>
       <w>vendredi</w>
       <w>visite</w>
       <w>vlille</w>
+      <w>voir</w>
+      <w>votre</w>
       <w>zoodelille</w>
     </words>
   </dictionary>

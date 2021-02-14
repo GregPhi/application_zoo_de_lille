@@ -19,6 +19,7 @@ public class AnimalViewModel extends ViewModel {
     private final AnimalRepository animalRepository;
     private final CompositeDisposable compositeDisposable;
     private final MutableLiveData<List<AnimalItemViewModel>> animals = new MutableLiveData<>();
+    private final MutableLiveData<AnimalItemViewModel> animal = new MutableLiveData<>();
     private final MutableLiveData<Boolean> isLoad = new MutableLiveData<>();
     private final AnimalToAnimalItemViewModel animalToAnimalItemViewModel = new AnimalToAnimalItemViewModel();
 
@@ -43,32 +44,6 @@ public class AnimalViewModel extends ViewModel {
 
                     }
                 }));
-    }
-
-    public MutableLiveData<List<AnimalItemViewModel>> getAllAnimal() {
-        isLoad.postValue(true);
-        compositeDisposable.clear();
-        compositeDisposable.add(animalRepository.getAllAnimal()
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribeWith(new ResourceSubscriber<List<AnimalEntity>>() {
-                @Override
-                public void onNext(List<AnimalEntity> animalEntities) {
-                    isLoad.postValue(false);
-                    animals.setValue(animalToAnimalItemViewModel.map(animalEntities));
-                }
-
-                @Override
-                public void onError(Throwable t) {
-                    isLoad.postValue(false);
-                }
-
-                @Override
-                public void onComplete() {
-                    isLoad.postValue(false);
-                }
-            }));
-        return animals;
     }
 
     public MutableLiveData<List<AnimalItemViewModel>> getAllAnimalOnAZ_or_ZA(boolean isAsc) {
@@ -97,10 +72,10 @@ public class AnimalViewModel extends ViewModel {
         return animals;
     }
 
-    public MutableLiveData<List<AnimalItemViewModel>> getAllAnimalIsFavorite_or_Not(boolean isFavorite) {
+    public MutableLiveData<List<AnimalItemViewModel>> getAllAnimalOnAZ_or_ZA_WhenISFavorite_or_Not(boolean isAsc,boolean isFavorite) {
         isLoad.postValue(true);
         compositeDisposable.clear();
-        compositeDisposable.add(animalRepository.getAllAnimalIsFavorite_or_Not(isFavorite)
+        compositeDisposable.add(animalRepository.getAllAnimalOnAZ_or_ZA_WhenISFavorite_or_Not(isAsc,isFavorite)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(new ResourceSubscriber<List<AnimalEntity>>() {
@@ -121,6 +96,32 @@ public class AnimalViewModel extends ViewModel {
                     }
                 }));
         return animals;
+    }
+
+    public MutableLiveData<AnimalItemViewModel> getAnimalEntityWithName(String name){
+        isLoad.postValue(true);
+        compositeDisposable.clear();
+        compositeDisposable.add(animalRepository.getAnimalEntityWithName(name)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new ResourceSubscriber<AnimalEntity>() {
+                    @Override
+                    public void onNext(AnimalEntity animalEntity) {
+                        isLoad.postValue(false);
+                        animal.setValue(animalToAnimalItemViewModel.map(animalEntity));
+                    }
+
+                    @Override
+                    public void onError(Throwable t) {
+                        isLoad.postValue(false);
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        isLoad.postValue(false);
+                    }
+                }));
+        return animal;
     }
 
     public MutableLiveData<Boolean> getIsLoad() {

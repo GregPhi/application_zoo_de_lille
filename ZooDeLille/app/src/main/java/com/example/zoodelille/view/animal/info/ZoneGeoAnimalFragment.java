@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
@@ -39,6 +40,8 @@ public class ZoneGeoAnimalFragment extends Fragment {
     }
 
     public void setupZoneGeo(){
+        TextView situation_geo_picture_description = rootView.findViewById(R.id.situation_geo_picture_description);
+        situation_geo_picture_description.setText(animalItemViewModel.getSituation_geo_picture_description());
         ImageView situation_geo_picture_url = rootView.findViewById(R.id.situation_geo_picture_url);
         Glide.with(this)
                 .load(animalItemViewModel.getSituation_geo_picture_url())

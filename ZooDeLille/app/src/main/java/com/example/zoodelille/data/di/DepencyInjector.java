@@ -26,6 +26,8 @@ import com.example.zoodelille.view.model.ViewModelFactoryZoo;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.google.gson.Gson;
 
+import java.util.concurrent.TimeUnit;
+
 import androidx.room.Room;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -120,10 +122,11 @@ public class DepencyInjector {
         if(retrofit == null){
             HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
             httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-            // add a time out
             OkHttpClient okHttpClient = new OkHttpClient.Builder()
                     .addInterceptor(httpLoggingInterceptor)
                     .addNetworkInterceptor(new StethoInterceptor())
+                    .connectTimeout(30, TimeUnit.SECONDS)
+                    .readTimeout(30,TimeUnit.SECONDS)
                     .build();
             retrofit = new Retrofit.Builder()
                     .baseUrl(ZooService.URL)
