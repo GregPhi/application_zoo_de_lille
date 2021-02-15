@@ -16,7 +16,7 @@
         android:contentDescription="@string/zone_geo" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/situation_geo_picture_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
