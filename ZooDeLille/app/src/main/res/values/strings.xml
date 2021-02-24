@@ -49,23 +49,23 @@
     <!-- FRAGMENT ANIMALS -->
     <string name="animals">Les animaux du zoo</string>
     <!-- FRAGMENT QUIZZES -->
-    <string name="quizzes">Quiz</string>
+    <string name="quizzes">Amusez-vous avec nos quizzes</string>
 
     <!-- FILTER -->
     <string name="filter_button">Filter button</string>
     <string name="text_filter_alpha">A - Z</string>
-    <string name="text_filter_make">Fait ?</string>
+    <string name="text_filter_make">Affichez vos quizzes déjà fait</string>
     <string name="text_filter_level">Niveau</string>
-    <string name="text_filter_favori">Afficher vos favoris</string>
+    <string name="text_filter_favori">Affichez vos favoris</string>
     <string name="text_filter_alim">Régime alimentaire</string>
     <string name="text_filter_distance">Distance</string>
     <string name="text_filter_time">Durée estimée</string>
 
     <!-- ANIMAL -->
-    <string name="description">Description</string>
-    <string name="menaced">Menaced</string>
-    <string name="classification">Classification</string>
-    <string name="nom_latin">Nom latin</string>
+    <string name="description">Description :</string>
+    <string name="menaced">Menaces :</string>
+    <string name="classification">Classification :</string>
+    <string name="nom_latin">Nom latin :</string>
     <string name="zone_geo">Zone geo</string>
     <string name="do_you_know">Le saviez-vous ?</string>
 
