@@ -19,7 +19,7 @@ public class AnimalItemViewModel implements Parcelable {
     private String classification;
     private String menaced;
     private boolean favorite;
-    private QuizEntity quiz;
+    private int quizid;
     private String picture;
 
     public AnimalItemViewModel() {
@@ -39,6 +39,7 @@ public class AnimalItemViewModel implements Parcelable {
         classification = in.readString();
         menaced = in.readString();
         favorite = in.readByte() != 0;
+        quizid = in.readInt();
         picture = in.readString();
     }
 
@@ -110,8 +111,8 @@ public class AnimalItemViewModel implements Parcelable {
         this.favorite = favorite;
     }
 
-    public void setQuiz(QuizEntity quiz) {
-        this.quiz = quiz;
+    public void setQuizid(int quizid) {
+        this.quizid = quizid;
     }
 
     public void setPicture(String picture) {
@@ -166,8 +167,8 @@ public class AnimalItemViewModel implements Parcelable {
         return favorite;
     }
 
-    public QuizEntity getQuiz() {
-        return quiz;
+    public int getQuizid() {
+        return quizid;
     }
 
     public String getPicture() {
@@ -202,6 +203,7 @@ public class AnimalItemViewModel implements Parcelable {
         parcel.writeString(classification);
         parcel.writeString(menaced);
         parcel.writeByte((byte) (favorite ? 1 : 0));
+        parcel.writeInt(quizid);
         parcel.writeString(picture);
     }
 }
