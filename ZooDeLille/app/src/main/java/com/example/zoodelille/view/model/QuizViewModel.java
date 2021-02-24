@@ -58,6 +58,32 @@ public class QuizViewModel extends ViewModel {
         return quizzes;
     }
 
+    public MutableLiveData<List<QuizItemViewModel>> getQuizzesMake() {
+        isLoad.postValue(true);
+        compositeDisposable.clear();
+        compositeDisposable.add(quizRepository.getAllMakeQuiz()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new ResourceSubscriber<List<QuizItemViewModel>>() {
+                    @Override
+                    public void onNext(List<QuizItemViewModel> quizItemViewModels) {
+                        isLoad.postValue(false);
+                        quizzes.setValue(quizItemViewModels);
+                    }
+
+                    @Override
+                    public void onError(Throwable t) {
+                        isLoad.postValue(false);
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        isLoad.postValue(false);
+                    }
+                }));
+        return quizzes;
+    }
+
     public MutableLiveData<QuizItemViewModel> getQuiz(int id){
         compositeDisposable.clear();
         compositeDisposable.add(quizRepository.getAQuiz(id)
