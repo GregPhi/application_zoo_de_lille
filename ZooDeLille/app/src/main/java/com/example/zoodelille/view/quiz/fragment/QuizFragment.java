@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 
 import com.example.zoodelille.R;
 import com.example.zoodelille.data.di.DepencyInjector;
@@ -50,6 +52,21 @@ public class QuizFragment extends Fragment implements Action {
         super.onActivityCreated(savedInstanceState);
         setupRecyclerView();
         initRecyclerView();
+        setupSwitch();
+    }
+
+    public void setupSwitch(){
+        final Switch switch_fav = m_view.findViewById(R.id.switch_fav);
+        switch_fav.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(b){
+                    initRecyclerView_QuizMake();
+                }else{
+                    initRecyclerView();
+                }
+            }
+        });
     }
 
     public void setupRecyclerView(){
@@ -63,6 +80,16 @@ public class QuizFragment extends Fragment implements Action {
     public void initRecyclerView(){
         quizViewModel = new ViewModelProvider(requireActivity(), DepencyInjector.getViewModelFactoryQuiz()).get(QuizViewModel.class);
         quizViewModel.getQuizzes().observe(getViewLifecycleOwner(), new Observer<List<QuizItemViewModel>>() {
+            @Override
+            public void onChanged(List<QuizItemViewModel> quizItemViewModels) {
+                quizListAdapter.setQuizzes(quizItemViewModels);
+            }
+        });
+    }
+
+    public void initRecyclerView_QuizMake(){
+        quizViewModel = new ViewModelProvider(requireActivity(), DepencyInjector.getViewModelFactoryQuiz()).get(QuizViewModel.class);
+        quizViewModel.getQuizzesMake().observe(getViewLifecycleOwner(), new Observer<List<QuizItemViewModel>>() {
             @Override
             public void onChanged(List<QuizItemViewModel> quizItemViewModels) {
                 quizListAdapter.setQuizzes(quizItemViewModels);
