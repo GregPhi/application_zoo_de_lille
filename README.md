@@ -25,7 +25,7 @@ Où IP c'est l'adresse IP d'où vous exécutez zoo-api
 - si pas d'erreur au niveau de l'api, vous pouvez lancer l'exécution de l'application depuis AndroidStudio
 
 Pour pouvoir utiliser la partie Map :
-- création d'un fichier string/google_maps_api.xml
+- création d'un fichier /src/debug/res/values/google_maps_api.xml
 ```xml
 <resources>
     <!--
