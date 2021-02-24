@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.example.zoodelille.R;
 import com.example.zoodelille.view.animal.adapter.AnimalItemViewModel;
+import com.example.zoodelille.view.quiz.fragment.makequiz.MakeAQuizActivity;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -51,6 +52,12 @@ public class AnimalInfoActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(),"Quiz",Toast.LENGTH_LONG).show();
+                int id = animal.getQuizid();
+                if(id!=-1){
+                    Intent intent = new Intent(AnimalInfoActivity.this, MakeAQuizActivity.class);
+                    intent.putExtra("id",id);
+                    startActivity(intent);
+                }
             }
         });
         ConstraintLayout where_in_zoo = findViewById(R.id.where_in_zoo);

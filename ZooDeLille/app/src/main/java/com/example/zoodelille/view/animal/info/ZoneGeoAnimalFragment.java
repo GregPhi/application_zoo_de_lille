@@ -47,6 +47,7 @@ public class ZoneGeoAnimalFragment extends Fragment {
                 .load(animalItemViewModel.getSituation_geo_picture_url())
                 .centerCrop()
                 .transition(DrawableTransitionOptions.withCrossFade())
+                .error(R.drawable.carte_monde)
                 .into(situation_geo_picture_url);
     }
 
