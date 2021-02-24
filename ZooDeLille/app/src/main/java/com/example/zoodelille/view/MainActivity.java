@@ -89,8 +89,10 @@ public class MainActivity extends AppCompatActivity {
     public void setupViewPager(){
         //final String[] tabTitles = new String[]{HomeFragment.name, RouteFragment.name, AnimalFragment.name, MapFragment.name, QuizFragment.name, QRCodeFragment.name};
         //final int[] tabIcons = new int[]{HomeFragment.icon, RouteFragment.icon, AnimalFragment.icon, MapFragment.icon, QuizFragment.icon, QRCodeFragment.icon};
-        final String[] tabTitles = new String[]{HomeFragment.name, AnimalFragment.name, MapFragment.name, QuizFragment.name, QRCodeFragment.name};
-        final int[] tabIcons = new int[]{HomeFragment.icon, AnimalFragment.icon, MapFragment.icon, QuizFragment.icon, QRCodeFragment.icon};
+        //final String[] tabTitles = new String[]{HomeFragment.name, AnimalFragment.name, MapFragment.name, QuizFragment.name, QRCodeFragment.name};
+        //final int[] tabIcons = new int[]{HomeFragment.icon, AnimalFragment.icon, MapFragment.icon, QuizFragment.icon, QRCodeFragment.icon};
+        final String[] tabTitles = new String[]{HomeFragment.name, AnimalFragment.name, MapFragment.name, QuizFragment.name};
+        final int[] tabIcons = new int[]{HomeFragment.icon, AnimalFragment.icon, MapFragment.icon, QuizFragment.icon};
         final ViewPager2 viewPager = findViewById(R.id.fragments_viewpager);
         final ViewPagerAdapterApplication viewPagerAdapter = new ViewPagerAdapterApplication(getSupportFragmentManager(), getLifecycle());
         viewPager.setAdapter(viewPagerAdapter);
@@ -119,6 +121,7 @@ public class MainActivity extends AppCompatActivity {
                         tab.setIcon(tabIcons[position]);
                     }
                 }).attach();
+        viewPager.setUserInputEnabled(false);
     }
 
     public boolean isConnected(){

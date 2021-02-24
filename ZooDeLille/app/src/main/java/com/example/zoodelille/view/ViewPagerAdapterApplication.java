@@ -58,14 +58,14 @@ public class ViewPagerAdapterApplication extends FragmentStateAdapter {
         if(position == 3){
             return QuizFragment.newInstance();
         }
-        if(position == 4){
+        /*if(position == 4){
             return QRCodeFragment.newInstance();
-        }
+        }*/
         return HomeFragment.newInstance();
     }
 
     @Override
     public int getItemCount() {
-        return 5;
+        return 4;
     }
 }
