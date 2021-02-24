@@ -95,7 +95,7 @@ public class ZooRepository {
                                             final List<AnswerEntity> answerEntities = new ArrayList<>();
                                             final List<QuizEntity> quizEntities = new ArrayList<>();
                                             Single<List<Quiz>> quiz = quizRemoteDataSource.getAllQuizzes()
-                                                    .zipWith(quizLocalDataSource.getAllMakeQuiz(), new BiFunction<List<Quiz>, List<Integer>, List<Quiz>>() {
+                                                    .zipWith(quizLocalDataSource.getAllMakeQuizId(), new BiFunction<List<Quiz>, List<Integer>, List<Quiz>>() {
                                                         @Override
                                                         public List<Quiz> apply(List<Quiz> quizzes, List<Integer> ids) throws Exception {
                                                             for(Quiz q : quizzes){
