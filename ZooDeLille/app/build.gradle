@@ -21,7 +21,6 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
         // Inject the Maps API key into the manifest
         manifestPlaceholders = [ mapsApiKey : mapsApiKey ]
 
