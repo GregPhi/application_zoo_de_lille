@@ -7,6 +7,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.example.zoodelille.R;
 import com.example.zoodelille.data.di.DepencyInjector;
 import com.example.zoodelille.view.model.Event;
@@ -69,6 +71,11 @@ public class MakeAQuizActivity extends AppCompatActivity {
     public void showQuestion(){
         QuestionItemViewModel questionItemViewModel = quizItemViewModel.getQuestions().get(nbQuestion);
         question.setText(questionItemViewModel.getQuestion());
+        Glide.with(this)
+                .load(questionItemViewModel.getUrl_extra())
+                .centerCrop()
+                .transition(DrawableTransitionOptions.withCrossFade())
+                .into(url_extra);
         List<AnswerItemViewModel> answerItemViewModels = questionItemViewModel.getAnswers();
         setupAnswer(answerItemViewModels.get(0),answer1);
         setupAnswer(answerItemViewModels.get(1),answer2);
@@ -82,6 +89,7 @@ public class MakeAQuizActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(answerItemViewModel.isGood()){
+                    System.out.println(nbGoodAnswer);
                     nbGoodAnswer++;
                 }
                 nbQuestion++;
@@ -92,10 +100,9 @@ public class MakeAQuizActivity extends AppCompatActivity {
                     quizViewModel.getQuizMakeIt().observeForever(new Observer<Event<Boolean>>() {
                         @Override
                         public void onChanged(Event<Boolean> event) {
-                            //Do nothing
+                            finish();
                         }
                     });
-                    finish();
                 }else{
                     showQuestion();
                 }
