@@ -6,6 +6,7 @@ import com.example.zoodelille.data.entity.quiz.QuizEntity;
 
 import androidx.room.Embedded;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.RoomWarnings;
 
 @Entity
@@ -19,9 +20,8 @@ public class AnimalEntity extends VisibleEntity {
     private String classification;
     private String menaced;
     private boolean favorite;
-    @SuppressWarnings(RoomWarnings.PRIMARY_KEY_FROM_EMBEDDED_IS_DROPPED)
-    @Embedded
-    private QuizEntity quiz;
+    @ForeignKey(entity = QuizEntity.class,parentColumns = "quiz_id",childColumns = "quizid",onDelete = ForeignKey.CASCADE)
+    private int quizid;
     private String picture;
 
     public AnimalEntity() {
@@ -111,12 +111,12 @@ public class AnimalEntity extends VisibleEntity {
         }
     }
 
-    public QuizEntity getQuiz() {
-        return quiz;
+    public int getQuizid() {
+        return quizid;
     }
 
-    public void setQuiz(QuizEntity quiz) {
-        this.quiz = quiz;
+    public void setQuizid(int quizid) {
+        this.quizid = quizid;
     }
 
     public String getPicture() {
