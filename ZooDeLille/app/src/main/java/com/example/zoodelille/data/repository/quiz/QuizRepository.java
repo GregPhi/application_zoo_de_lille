@@ -66,8 +66,18 @@ public class QuizRepository {
                 });
     }
 
-    public Single<List<Integer>> getAllMakeQuiz(){
-        return quizLocalDataSource.getAllMakeQuiz();
+    public Single<List<Integer>> getAllMakeQuizId(){
+        return quizLocalDataSource.getAllMakeQuizId();
+    }
+
+    public Flowable<List<QuizItemViewModel>> getAllMakeQuiz(){
+        return quizLocalDataSource.getAllMakeQuiz()
+                .map(new Function<List<QuizEntity>, List<QuizItemViewModel>>() {
+                    @Override
+                    public List<QuizItemViewModel> apply(List<QuizEntity> quizEntities) throws Exception {
+                        return quizEntityToQuizItemViewModel.map(quizEntities);
+                    }
+                });
     }
 
     public Single<List<Quiz>> getAllQuizzes(){

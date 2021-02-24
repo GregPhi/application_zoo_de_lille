@@ -36,7 +36,11 @@ public class QuizLocalDataSource {
         return projectDatabase.quizDao().getAllQuiz();
     }
 
-    public Single<List<Integer>> getAllMakeQuiz(){
+    public Single<List<Integer>> getAllMakeQuizId(){
+        return projectDatabase.quizDao().getAllMakeQuizId();
+    }
+
+    public Flowable<List<QuizEntity>> getAllMakeQuiz(){
         return projectDatabase.quizDao().getAllMakeQuiz();
     }
 }
