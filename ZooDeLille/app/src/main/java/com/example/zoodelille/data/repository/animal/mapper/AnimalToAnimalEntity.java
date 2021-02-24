@@ -1,15 +1,13 @@
 package com.example.zoodelille.data.repository.animal.mapper;
 
 import com.example.zoodelille.data.api.object.animal.Animal;
+import com.example.zoodelille.data.api.object.quiz.Quiz;
 import com.example.zoodelille.data.entity.animal.AnimalEntity;
-import com.example.zoodelille.data.repository.quiz.mapper.QuizToQuizEntity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class AnimalToAnimalEntity {
-    private static final QuizToQuizEntity quizToQuizEntity = new QuizToQuizEntity();
-
     public AnimalEntity map(Animal animal){
         AnimalEntity animalEntity = new AnimalEntity();
 
@@ -18,6 +16,13 @@ public class AnimalToAnimalEntity {
 
         animalEntity.setLongitude(animal.getZooPosition().getLongitude());
         animalEntity.setLatitude(animal.getZooPosition().getLatitude());
+
+        Quiz quiz = animal.getQuiz();
+        if(quiz==null){
+            animalEntity.setQuizid(-1);
+        }else{
+            animalEntity.setQuizid(quiz.getId());
+        }
 
         animalEntity.setSituation_geo_picture_url(animal.getSituation_geo_picture_url());
         animalEntity.setSituation_geo_picture_description(animal.getSituation_geo_picture_description());
