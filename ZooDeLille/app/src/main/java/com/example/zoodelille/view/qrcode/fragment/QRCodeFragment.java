@@ -44,8 +44,8 @@ public class QRCodeFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        //IntentIntegrator scanIntegrator = new IntentIntegrator(getActivity());
-        //scanIntegrator.initiateScan();
+        IntentIntegrator scanIntegrator = new IntentIntegrator(getActivity());
+        scanIntegrator.initiateScan();
     }
 
     @Override
