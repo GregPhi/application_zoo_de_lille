@@ -22,7 +22,7 @@ public class AnimalToAnimalItemViewModel {
         animalItemViewModel.setClassification(animal.getClassification());
         animalItemViewModel.setMenaced(animal.getMenaced());
         animalItemViewModel.setFavorite(animal.isFavorite());
-        animalItemViewModel.setQuiz(animal.getQuiz());
+        animalItemViewModel.setQuizid(animal.getQuizid());
         animalItemViewModel.setPicture(animal.getPicture());
         return animalItemViewModel;
     }
@@ -49,7 +49,7 @@ public class AnimalToAnimalItemViewModel {
         animalEntity.setClassification(animalItemViewModel.getClassification());
         animalEntity.setMenaced(animalItemViewModel.getMenaced());
         animalEntity.setFavorite(animalItemViewModel.isFavorite());
-        animalEntity.setQuiz(animalItemViewModel.getQuiz());
+        animalEntity.setQuizid(animalItemViewModel.getQuizid());
         animalEntity.setPicture(animalItemViewModel.getPicture());
         return animalEntity;
     }
